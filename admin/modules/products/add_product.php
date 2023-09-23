@@ -4,7 +4,7 @@ $list_color = search_data("color");
 //xử lí thêm dữ liệu sản phẩm
 if (isset($_POST['btn_add'])) {
     //xử lí hình ảnh:
-    if (isset($_FILES['img'])) {
+    if (isset($_FILES['img'])&&!empty($_FILES['img']['name'])) {
         $file_name = $_FILES['img']['name']; // Lấy tên tệp ảnh
         $file_tmp = $_FILES['img']['tmp_name']; // Lấy đường dẫn tạm thời của tệp ảnh
         $upload_dir = '../images/img_product/'; // Thư mục để lưu trữ ảnh
@@ -18,47 +18,49 @@ if (isset($_POST['btn_add'])) {
         } else {
             // Kiểm tra kích thước tệp ảnh (ở đây, giới hạn kích thước tệp là 5MB)
             $max_file_size = 5 * 1024 * 1024; // 5MB
-            $file_size = $_FILES['img']['size'];
-
+            $file_size = $_FILES['img']['size']; //đơn vị KB
             if ($file_size > $max_file_size) {
                 echo 'Kích thước tệp ảnh quá lớn. Chỉ cho phép tệp ảnh có kích thước tối đa là 5MB.';
             } else {
                 // Di chuyển tệp ảnh vào thư mục đích
                 if (move_uploaded_file($file_tmp, $upload_dir . $file_name)) {
                     $image_path = $upload_dir . $file_name;
-                    echo 'Tệp ảnh đã được tải lên thành công. Đường dẫn: ' . $image_path;
+                    // echo 'Tệp ảnh đã được tải lên thành công. Đường dẫn: '."images/img_product/".$file_name;
+                    $data['img'] = "images/img_product/" . $file_name;
                 } else {
                     echo 'Có lỗi xảy ra khi tải lên tệp ảnh.';
                 }
             }
         }
     }
-    // $data['name'] = $_POST['name'];
-    // $data['id'] = $_POST['id'];
-    // $data['price'] = $_POST['price'];
-    // // print_r($color);
-    // $data['cat_product_id'] = $_POST['cat'];
-    // $data['detail'] = $_POST['detail'];
-    // echo $data['cat_product_id'];
-    // $data['img'] = "haha";
-    // $data['qty'] = $_POST['qty'];
-    // $color = $_POST['color'];
-    // // insert_db("products",$data);
-    // print_r($color);
-    // echo  $data['id'];
-    // //thêm màu sắc cho sản phẩm
-    // foreach ($color as $key => $value) {
-    //     $data_color['color_id'] = $value;
-    //     $data_color['id_product_color'] = $data['id'];
-    //     insert_db("product_color",$data_color);
-    // }
-    // print_r($data_color);
-    // // $image = $_FILES['image'];
-    // // $image_tmp = $image['tmp_name'];
-    // // $image_name = $image['name'];
-    // // $image_type = $image['type'];
-    // // $image_size = $image['size'];
-    // echo "<script>window.location='?mod=products'</script>";
+    //lâsy danh sách màu sắc
+    if (isset($_POST["color"]) && is_array($_POST["color"])) {
+            $color = $_POST['color'];
+    }
+    $data['name'] = $_POST['name'];
+    $data['id'] = $_POST['id'];
+    $data['price'] = $_POST['price'];
+    $data['cat_product_id'] = $_POST['cat'];
+    $data['detail'] = $_POST['detail'];
+    $data['qty'] = $_POST['qty'];
+    if (!empty($data['name']) && !empty($data['id']) && !empty($data['price']) && !empty($data['cat_product_id']) && !empty($data['detail']) && !empty($data['qty']) && !empty($data['img'])) {
+        insert_db("products", $data);
+        //xử lí thêm  màu sắc
+        if (!empty($color)) {
+            foreach ($color as $key => $value) {
+                $data_color['color_id'] = $value;
+                $data_color['id_product_color'] = $data['id'];
+                insert_db("product_color", $data_color);
+            }
+        }
+        echo "<script>window.location='?mod=products'</script>";
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+
+        echo "<script>window.location='?mod=products'</script>";
+    }
 }
 //hết
 

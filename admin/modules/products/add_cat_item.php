@@ -33,7 +33,6 @@ if (isset($_POST['btn_add_child'])) {
     }else{ 
         // xu ly loi
         // echo "Lỗi: " . $sql . "<br>" . $conn->error;
-        
     }
 }
 ?>

@@ -69,7 +69,7 @@ $config['backends'][] = array(
     'adapter'      => 'local',
     // sửa base url để lưu ảnh vào thư mục img
     // 'baseUrl'      => '/ckfinder/userfiles/',
-    'baseUrl'      => 'http://localhost:8088/nhom1/admin/public/img',
+    'baseUrl'      => 'http://localhost:8088/nhom1/images/img_ck/',
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,

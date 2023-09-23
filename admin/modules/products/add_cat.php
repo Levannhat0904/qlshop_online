@@ -7,8 +7,8 @@ if (isset($_POST['btn_add_cat'])) {
     }else{
         $data['slug'] = "product." .  $data['cat'];
         // Thêm dữ liệu vào CSDL
-        insert_db("cats", $data, "slug", $data['slug']);
-        echo "<script>window.location='?mod=products&act=cat_product'</script>";
+        // insert_db("cats", $data, "slug", $data['slug']);
+        // echo "<script>window.location='?mod=products&act=cat_product'</script>";
     }
     // header("location:?mod=products&act=cat_product");
 }
