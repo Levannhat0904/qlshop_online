@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <base href="http://localhost:8088/nhom1/admin/">
-    <script src="plugins/ckeditor/ckeditor.js"></script>
-    <link rel="stylesheet" href="public/css/style.css">
+    <base href="http://localhost:8088/nhom1/">
+    <script src="admin/plugins/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="admin/public/css/style.css">
     <title>Document</title>
 </head>
 

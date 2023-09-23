@@ -2,7 +2,37 @@
 $list_color = search_data("color");
 
 //xử lí thêm dữ liệu sản phẩm
-if(isset($_POST['btn_add'])){
+if (isset($_POST['btn_add'])) {
+    //xử lí hình ảnh:
+    if (isset($_FILES['img'])) {
+        $file_name = $_FILES['img']['name']; // Lấy tên tệp ảnh
+        $file_tmp = $_FILES['img']['tmp_name']; // Lấy đường dẫn tạm thời của tệp ảnh
+        $upload_dir = '../images/img_product/'; // Thư mục để lưu trữ ảnh
+
+        // Kiểm tra định dạng ảnh (ở đây, chúng ta kiểm tra định dạng JPG, PNG, hoặc GIF)
+        $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+        $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+
+        if (!in_array($file_extension, $allowed_extensions)) {
+            echo 'Chỉ cho phép tải lên các tệp ảnh JPG, JPEG, PNG hoặc GIF.';
+        } else {
+            // Kiểm tra kích thước tệp ảnh (ở đây, giới hạn kích thước tệp là 5MB)
+            $max_file_size = 5 * 1024 * 1024; // 5MB
+            $file_size = $_FILES['img']['size'];
+
+            if ($file_size > $max_file_size) {
+                echo 'Kích thước tệp ảnh quá lớn. Chỉ cho phép tệp ảnh có kích thước tối đa là 5MB.';
+            } else {
+                // Di chuyển tệp ảnh vào thư mục đích
+                if (move_uploaded_file($file_tmp, $upload_dir . $file_name)) {
+                    $image_path = $upload_dir . $file_name;
+                    echo 'Tệp ảnh đã được tải lên thành công. Đường dẫn: ' . $image_path;
+                } else {
+                    echo 'Có lỗi xảy ra khi tải lên tệp ảnh.';
+                }
+            }
+        }
+    }
     // $data['name'] = $_POST['name'];
     // $data['id'] = $_POST['id'];
     // $data['price'] = $_POST['price'];
@@ -28,7 +58,7 @@ if(isset($_POST['btn_add'])){
     // // $image_name = $image['name'];
     // // $image_type = $image['type'];
     // // $image_size = $image['size'];
-    echo "<script>window.location='?mod=products'</script>";
+    // echo "<script>window.location='?mod=products'</script>";
 }
 //hết
 
@@ -64,7 +94,7 @@ if ($result_cat_item->num_rows > 0) {
         <hr>
     </div>
     <hr>
-    <form action="" method="post" style="margin: 0 10px;">
+    <form action="" method="post" style="margin: 0 10px;" enctype="multipart/form-data">
         <div class="form-group">
             <label for="id">Mã sản phẩm</label>
             <input type="text" class="form-control" id="id" name="id">
@@ -107,7 +137,7 @@ if ($result_cat_item->num_rows > 0) {
                 <?php
                 foreach ($data_cat_item as $key => $value) {
                     echo '<optgroup label="' . $key . '">';
-                    foreach ($value as$k=> $v) {
+                    foreach ($value as $k => $v) {
                         echo '<option value=' . $k . '>' . $v . '</option>';
                     }
                     echo '</optgroup>';

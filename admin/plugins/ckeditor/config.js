@@ -8,6 +8,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	//thêm trình quản lí file vo
-	config.filebrowserBrowseUrl ='plugins/ckfinder/ckfinder.html';
-	config.filebrowserUploadUrl ='plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+	config.filebrowserBrowseUrl ='admin/plugins/ckfinder/ckfinder.html';
+	config.filebrowserUploadUrl ='admin/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
 };
