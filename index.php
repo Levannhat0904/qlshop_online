@@ -1,4 +1,20 @@
-<?php
-    // cop thu mục mấy nay b với thảo code ghép vào
-    echo  "haaaahâ";
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+    include_once './header.php' 
+    ?>
+    <form action="" method="POST">
+        <?php
+        include_once './phone.php' 
+        ?>
+    </form>
+    <?php 
+    include_once './footer.php'?>
+</body>
+</html>
