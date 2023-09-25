@@ -10,12 +10,16 @@ function check_trung_key($table_name, $key, $value){
         return false;
     }
 }
-function insert_db($table_name, $data=array(), $key, $value_key){
+function insert_db($table_name, $data=array(), $key="", $value_key=""){
     global $conn;
     if(!empty($data)){
-        if(check_trung_key($table_name, $key, $value_key)){
-            return false;
-        }else{
+        if(!empty($key)||!empty($value_key)){
+            if(check_trung_key($table_name, $key, $value_key)){
+                echo "trùng key";
+                return false;//bị trùng key
+            }
+        }
+        else{
             //xử lí thêm values vào db
             // Chuyển mảng $data thành một chuỗi các trường và giá trị tương ứng
             $columns = implode(", ", array_keys($data));

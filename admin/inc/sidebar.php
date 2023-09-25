@@ -40,7 +40,7 @@
             </div>
             <div class="nav">
                 <div class="d-inline-block nav-item">
-                    <a href="?mod=pages" class="menu-link">
+                    <a href="?mod=products" class="menu-link">
                         <div class="d-inline-block text-dark menu">
                             <i class="far fa-folder "></i>&nbsp; Sản phẩm
                         </div>
@@ -49,6 +49,7 @@
                         <a class="menu-link" href="?mod=products">Danh sách</a>
                         <a class="menu-link" href="?mod=products&act=add_product">Thêm mới</a>
                         <a class="menu-link" href="?mod=products&act=cat_product">Danh mục</a>
+                        <a class="menu-link" href="?mod=products&act=color_product">Màu sắc</a>
                     </div>
                 </div>
             </div>
