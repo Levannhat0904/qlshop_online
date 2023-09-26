@@ -2,8 +2,8 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "qlshop_online";
-    
+    $database = "test2";
+    global $conn;
     $conn = new mysqli($servername, $username, $password, $database);
     
     // Kiểm tra kết nối

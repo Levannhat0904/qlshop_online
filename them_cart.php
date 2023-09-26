@@ -1,11 +1,10 @@
+
 <?php
 session_start(); // Bắt đầu phiên làm việc
-
 // Kiểm tra xem giỏ hàng đã được khởi tạo chưa, nếu chưa thì khởi tạo
 if (!isset($_SESSION['addcart'])) {
     $_SESSION['addcart'] = array();
 }
-
 // Hàm thêm sản phẩm vào giỏ hàng
 function addToCart($idsanpham, $soluong) {
     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
