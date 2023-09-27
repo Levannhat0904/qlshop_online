@@ -8,26 +8,8 @@
             $gia=$_POST['gia'];
             $soluong=$_POST['soluong'];
             $sp=[$idsanpham,$tensp,$gia,$soluong];
-            $_SESSION['giohang'][]=$sp;   
-            var_dump($_SESSION['giohang']);     
+            $_SESSION['giohang'][]=$sp;     
    }
-   function showgiohang(){
-    if(isset($_SESSION['giohang'])&&is_array($_SESSION['giohang'])){
-        for($i=0;$i<sizeof($_SESSION['giohang']);$i++){
-            $tt=$_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][3];
-            echo'
-            <tr>
-            <td>'.($i+1).'</td>
-            <td><img src="./picture/'.$_SESSION['giohang'][$i][0].'"></td>
-            <td>'.$_SESSION['giohang'][$i][1].'</td>
-            <td>'.$_SESSION['giohang'][$i][2].'</td>
-            <td>'.$_SESSION['giohang'][$i][3].'</td>
-             <td><div>'.$tt.'</div></td>
-            </tr>';
-             
-        }
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +23,7 @@
     <?php
     include_once './header.php' 
     ?>
-    
+    <form action="" method="post">
          <table>
             <tr>
                 <td>
@@ -193,7 +175,9 @@
                 </div>
                 </td>
             </tr>
-        </table>   
+        </table>  
+    </form>
+         
     <?php   
     include_once './footer.php' 
     ?>

@@ -6,15 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    include_once './header.php' 
-    ?>
+    
     <form action="" method="POST">
         <?php
-        include_once './phone.php' 
+        include_once './dangnhap.php' 
         ?>
     </form>
-    <?php 
-    include_once './footer.php'?>
+    
 </body>
 </html>

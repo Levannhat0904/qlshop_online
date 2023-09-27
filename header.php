@@ -77,6 +77,7 @@
 		}
 	</style>
 	<link rel="stylesheet" href="./Css/css_bootstrap.min.css" >
+	<base href="http://localhost/qlshop_online/phone.php" target="_blank">
 </head>
 
 <body>
