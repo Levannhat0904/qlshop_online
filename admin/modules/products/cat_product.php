@@ -38,7 +38,9 @@ require 'modules/products/add_cat_item.php';
         <div class="cat-product">
             <div class="post-header">
                 <span style="font-weight: bold; font-size: 20px; line-height: 2; margin-left: 10px;">Thêm
-                    danh mục cha</span>
+                    danh mục cha 
+                    
+                </span>
                 <hr>
             </div>
 

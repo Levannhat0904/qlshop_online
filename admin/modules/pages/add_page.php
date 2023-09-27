@@ -14,8 +14,9 @@ if (isset($_POST['btn_add'])) {
         if(!insert_db("pages", array("id" => $id, "name" => $name, "content" => $content), "id", $id)){
             echo "<script>alert('Lỗi khi thêm dữ kiếm - Trùng mã trang')</script>";
         }else{
-            echo "<script>alert('Thêm dữ liệu thành công')</script>";
+            // echo "<script>alert('Thêm dữ liệu thành công')</script>";
             // header("location:?mod=pages");
+            echo "<script>window.location='?mod=pages'</script>";
         }
     }
 }

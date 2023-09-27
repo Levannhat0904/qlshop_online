@@ -16,6 +16,7 @@ function check_trung_key($table_name, $key, $value)
 }
 function insert_db($table_name, $data = array(), $key = "", $value_key = "")
 {
+    global $error;
     global $conn;
 
     if (!empty($data)) {
@@ -23,6 +24,8 @@ function insert_db($table_name, $data = array(), $key = "", $value_key = "")
             //xử lí trong th ins có kiểm tra khóa
             // echo $key.$value_key.$table_name;
             if (check_trung_key($table_name, $key, $value_key)) {
+                $error['key'] ='Trùng khóa ngoại';
+               
                 return false; //bị trùng key
             }
         }
@@ -76,7 +79,7 @@ function search_data($table_name, $data = "", $datafield = "", $bool = true)
 {
     global $conn;
     if ($data != "" && $bool == true) {
-        $sql = "SELECT * FROM  $table_name  WHERE $datafield= $data";
+        $sql = "SELECT * FROM  $table_name  WHERE $datafield= '{$data}'";
     } else if ($data != "" && $bool == false) {
         $sql = "SELECT * FROM $table_name WHERE $datafield LIKE '%$data%'";
     } else {
