@@ -1,10 +1,24 @@
 <?php
+// echo $_SESSION['user_id'];
 $permissions = search_data('permissions');
 $users = search_data('users');
-if(isset($_POST['btn_search'])){
+if (isset($_POST['btn_search'])) {
     $users = search_data('users', $_POST['email'], 'email', '1');
     // echo $_POST['email'];
     print_r($_POST);
+}
+if (isset($_POST['btn_add'])) {
+    $user = $_POST['user'];
+    $per = $_POST['permission'];
+    //kiểm tra xem user đã có quyền đó hay chưa
+    $sql = "SELECT * FROM role_permission WHERE user_id = {$user} AND permission_id = {$per}";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if($num == 0){
+        // echo "haaa";
+        insert_db('role_permission', ['user_id' => $user, 'permission_id' => $per]);
+    }
+    // echo "<script>window.location.href = '?mod=permissions';</script>";
 }
 ?>
 <div class="row" style="display: flex; justify-content: space-around;">
@@ -19,7 +33,7 @@ if(isset($_POST['btn_search'])){
             <form action="" method="post">
                 <label for="email">Tìm kiếm user</label>
                 <div class="form-group" style="display: flex;">
-                    <input type="email" class="form-control"  placeholder="Nhập email user" name="email" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>" id="email">
+                    <input type="email" class="form-control" placeholder="Nhập email user" name="email" value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>" id="email">
                     <input type="submit" value="Tìm kiếm" style="margin-left: 10px;" name="btn_search">
                 </div>
             </form>
@@ -29,7 +43,7 @@ if(isset($_POST['btn_search'])){
                     <select name="user" class="form-control" id="user">
                         <?php
                         while ($user = $users->fetch_assoc()) {
-                            echo "<option value='1'>{$user['name']}</option>";
+                            echo "<option value='{$user['id']}'>{$user['name']}</option>";
                         }
                         ?>
                     </select>
@@ -39,9 +53,13 @@ if(isset($_POST['btn_search'])){
                     <select name="permission" class="form-control" id="permission">
                         <?php
                         while ($permission = $permissions->fetch_assoc()) {
-                            echo "<option value='1'>{$permission['name']}</option>";
+                            $selected = ($permission['id'] == $per) ? 'selected' : '';
+                            // echo $selected;
+                            // echo "<script>console.log('{$selected}');</script>";
+                            echo "<option class='form-control' value='{$permission['id']}' $selected>{$permission['name']}</option>";
                         }
                         ?>
+
                     </select>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Thêm mới" name="btn_add" style="margin: 10px;">
