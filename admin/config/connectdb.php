@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "test2";
+    $database = "qlshop_online";
     global $conn;
     $conn = new mysqli($servername, $username, $password, $database);
     

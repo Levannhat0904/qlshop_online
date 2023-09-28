@@ -44,12 +44,13 @@ require 'modules/products/add_cat_item.php';
                 <hr>
             </div>
 
-            <form action="" method="post">
+            <form action="" method="post">  
                 <div class="form-group">
                     <label for="cat">Tên danh mục cha</label>
                     <input type="text" class="form-control" id="cat" name="cat">
-                    <?php if (empty($data['cat']) && isset($error)) {
-                        echo '<div class="error">' . $error . '</div>';
+                    <?php if (empty($data['cat']) && !empty($error)) {
+                        echo '<div class="error">' . $error[''] . '</div>';
+                        // print_r($error);
                     }
                     ?>
                 </div>

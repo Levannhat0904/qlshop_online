@@ -10,11 +10,11 @@ if (isset($_POST['btn_add_cat'])) {
         // Thêm dữ liệu vào CSDL
         if(insert_db("cats", $data, "slug", $data['slug'])){
             // echo $error['key'];
-            // echo "<script>window.location='?mod=products&act=cat_product'</script>";
+            echo "<script>window.location='?mod=products&act=cat_product'</script>";
         }
         // echo "hahah";   
     }   
-    print_r($error);
+    // print_r($error);
     // header("location:?mod=products&act=cat_product");
 }
 ?>
