@@ -31,7 +31,7 @@ mysqli_close($con);
     </style>
 </head>
 <body>
-    <?php include_once'./header.php'?>
+    <?php include_once'./menu.php'?>
     <form action="" method="post">
         <table>
     <tr>
@@ -59,14 +59,14 @@ mysqli_close($con);
                 </td> 
             </tr>
         </table>
-        <table >
+        <table width="800px" height="150px">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th>Đơn giá</th>
                 <th>Số lượng</th>
-                <th>Thành tiền</th>
+                <!-- <th>Thành tiền</th> -->
             </tr>
             <?php 
         if(isset($data)&& $data!=null){
@@ -79,7 +79,6 @@ mysqli_close($con);
             <td ><?php echo $row['tensanpham'] ?></td>
             <td><?php echo $row['dongia'] ?></td>
             <td><input class="but"type="number" name="soluong" value="<?php echo $row['soluong']?>" width="50px" height="50px" ></td>
-            <td><?php echo $row['dongia']*$row['soluong']?></td>
             <td>
                 <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
                 <a href="">Thanh toán</a>
