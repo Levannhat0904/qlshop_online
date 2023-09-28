@@ -5,6 +5,8 @@
                 <a href="">NHÓM 1</a>
                 <hr>
             </div>
+            <!-- kiểm tra quyền -->
+            
             <div class="nav">
                 <div class="d-inline-block nav-item">
                     <a href="?view=list-post" class="menu-link">
@@ -15,6 +17,7 @@
 
                 </div>
             </div>
+
             <div class="nav">
                 <div class="d-inline-block nav-item">
                     <a href="?view=list-post" class="menu-link">

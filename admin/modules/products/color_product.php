@@ -1,5 +1,5 @@
 <?php
-    $list_color = search_data("color_product");
+    $list_color = search_data("color");
     // require 'modules/products/color_product.php';
     require 'modules/products/add_color.php';
     
