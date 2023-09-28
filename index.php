@@ -9,7 +9,7 @@
     
     <form action="" method="POST">
         <?php
-        include_once './dangnhap.php' 
+        include_once './phone.php' 
         ?>
     </form>
     

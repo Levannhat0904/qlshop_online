@@ -2,7 +2,7 @@
 //Kết nối database
 $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
 //Thực hiện truy vấn
-$sql="SELECT * FROM giohang";
+$sql="SELECT * FROM giohang ";
 $data=mysqli_query($con,$sql);
 //Tìm kiếm
 if(isset($_POST['btnTim']))
@@ -12,24 +12,11 @@ if(isset($_POST['btnTim']))
     $sqltk="SELECT * FROM giohang WHERE  idsanpham like '%$idsanpham%'and tensanpham like '%$tensanpham%'";
     $data=mysqli_query($con,$sqltk);
 }
-function showgiohang(){
-        if(isset($_SESSION['giohang'])&&is_array($_SESSION['giohang'])){
-        for($i=0;$i<sizeof($_SESSION['giohang']);$i++){
-            $tt=$_SESSION['giohang'][$i][2]*$_SESSION['giohang'][$i][3];
-            echo'
-            <tr>
-            <td>'.($i+1).'</td>
-            <td><img src="./picture/'.$_SESSION['giohang'][$i][0].'"></td>
-            <td>'.$_SESSION['giohang'][$i][1].'</td>
-            <td>'.$_SESSION['giohang'][$i][2].'</td>
-            <td>'.$_SESSION['giohang'][$i][3].'</td>
-             <td><div>'.$tt.'</div></td>
-            </tr>'; 
-        }
-    }
-}
 //đóng kết nối
 mysqli_close($con);
+// session_start();
+// if(isset($_SESSION['cart'])){
+    //var_dump($_SESSION['cart']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +24,14 @@ mysqli_close($con);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .but{
+            width: 50px;
+        }
+    </style>
 </head>
 <body>
-    <?php 
-    include_once './header.php'
-    ?>
+    <?php include_once'./header.php'?>
     <form action="" method="post">
         <table>
     <tr>
@@ -79,7 +69,6 @@ mysqli_close($con);
                 <th>Thành tiền</th>
             </tr>
             <?php 
-             
         if(isset($data)&& $data!=null){
             $i=1;
             while($row=mysqli_fetch_array($data)){
@@ -89,8 +78,8 @@ mysqli_close($con);
             <td><?php echo $row['idsanpham'] ?></td>
             <td ><?php echo $row['tensanpham'] ?></td>
             <td><?php echo $row['dongia'] ?></td>
-            <td><?php echo $row['soluong']?></td>
-            <td><?php echo $row['thanhtien']?></td>
+            <td><input class="but"type="number" name="soluong" value="<?php echo $row['soluong']?>" width="50px" height="50px" ></td>
+            <td><?php echo $row['dongia']*$row['soluong']?></td>
             <td>
                 <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
                 <a href="">Thanh toán</a>
@@ -100,6 +89,7 @@ mysqli_close($con);
             }
         }
         ?>
+
         </table>
     </form>
 </body>
