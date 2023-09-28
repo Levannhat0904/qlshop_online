@@ -9,7 +9,6 @@
         $tendn=$_POST['txtUsername'];
         $matkhau=$_POST['txtPassword'];
         $email=$_POST['txtEmail'];
-        $usertype=$_POST['user_type'];
         //Kiểm tra dữ liệu rỗng
         if($tendn==''&&$matkhau==''&&$email==''){
             echo "<script>alert('Kiểm tra lại thông tin')</script>";
@@ -24,7 +23,7 @@
         else
         {
             //tạo và thực hiện truy vấn
-        $sql="INSERT INTO users(username,email,pass,usertype) VALUES('$tendn','$email','$matkhau','$usertype')";
+        $sql="INSERT INTO users(username,email,pass) VALUES('$tendn','$email','$matkhau')";
         $kq=mysqli_query($con,$sql);
         if($kq)
         echo "<script>alert('Đăng ký  thành công')</script>";
@@ -48,10 +47,6 @@
       <input type="text" name="txtUsername" required placeholder="enter your name">
       <input type="email" name="txtEmail" required placeholder="enter your email">
       <input type="password" name="txtPassword" required placeholder="enter your password">
-      <select name="user_type">
-         <option value="user">user</option>
-         <option value="admin">admin</option>
-      </select>
       <input type="submit" name="btnDangky" value="Đăng ký" class="form-btn">
       <p>Bạn đã có tài khoản? <a href="dangnhap.php">Đăng nhập</a></p>      
    </form>

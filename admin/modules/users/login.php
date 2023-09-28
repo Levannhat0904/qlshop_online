@@ -8,11 +8,7 @@ if(isset($_POST['dangnhap'])){
     $result=mysqli_query($con,$select);
     if(mysqli_num_rows($result)>0){
         $row=mysqli_fetch_array($result);
-        if($row['usertype']=='user'){
-            $_SESSION['user_name']==$row['username'];
-            header('location:phone.php');
-        }
-        elseif($row['usertype']=='admin'){
+        {
             $_SESSION['admin_name']==$row['username'];
             header('location:phone.php');
         }
@@ -33,9 +29,7 @@ if(isset($_POST['dangnhap'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
-    <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="form-container">
@@ -52,9 +46,7 @@ if(isset($_POST['dangnhap'])){
       <input type="text" name="txt_ten" required placeholder="enter your username">
       <input type="password" name="txt_mk" required placeholder="enter your password">
       <input class="form-btn" type="submit" value="Đăng nhập" name="dangnhap">
-      <p>Bạn chưa có tài khoản? <a href="dangky.php">Đăng ký</a></p> 
-      
-      
+      <p>Bạn chưa có tài khoản? <a href="dangky.php">Đăng ký</a></p>     
    </form>
 </div>
 </body>

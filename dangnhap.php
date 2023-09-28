@@ -8,11 +8,7 @@ if(isset($_POST['dangnhap'])){
     $result=mysqli_query($con,$select);
     if(mysqli_num_rows($result)>0){
         $row=mysqli_fetch_array($result);
-        if($row['usertype']=='user'){
-            $_SESSION['user_name']==$row['username'];
-            header('location:phone.php');
-        }
-        elseif($row['usertype']=='admin'){
+        {
             $_SESSION['admin_name']==$row['username'];
             header('location:phone.php');
         }
