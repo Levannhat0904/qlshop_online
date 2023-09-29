@@ -29,6 +29,7 @@ mysqli_close($con);
             text-decoration: none;
         }
     </style>
+    <link rel="stylesheet" href="./css/menu.css">
 </head>
 <body>
     <?php include_once'./menu.php'?>
@@ -61,7 +62,7 @@ mysqli_close($con);
             </tr>
         </table>
         <br><br>
-        <table width="900px" height="180px" align="center" border="1sp">
+        <table width="1000px" height="200px" align="center" border="1sp">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>

@@ -1,7 +1,6 @@
 body{
     background-image: url('../picture/tải\ xuống.jpg');
-    background-size: cover;
-    
+    background-size: cover;   
 }
 .container{
     max-width: 960px;

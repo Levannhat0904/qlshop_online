@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
-    
-    <form action="" method="POST">
-        <?php
+    <?php
         include_once './phone.php' 
         ?>
-    </form>
-    
 </body>
 </html>
