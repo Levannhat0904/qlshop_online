@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-header {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu {
+    font-size: 20px;
+}
+
+.menu-item {
+    padding-left: 30px;
+    display: none;
+}
+
+.nav {
+    width: 100%;
+}
+
+.menu-link {
+    padding: 5px 0;
+    display: inline-block;
+    width: 200%;
+}
+
+/* Hiển thị submenu khi hover vào menu */
+.nav-item:hover .menu-item {
+    width: 100%;
+    display: block;
+}
+
+.info-user {
+    font-size: 16px;
+    background-color: rgb(235, 232, 237);
+    /* display: inline-block; */
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    display: none;
+}
+
+.info,
+.logout {
+    padding: 10px 40px;
+    border: 1px solid black;
+    margin-bottom: 3px;
+}
+
+.logout>a {
+    padding: 5px 10px;
+}
+
+.user:hover .info-user {
+    z-index: 1;
+    display: block;
+}
+
+.card {
+    /* display: flex; */
+    max-width: calc(100%/12*2.6);
+    margin: 10px 20px;
+}
+
+.post {
+    max-width: 100%;
+    margin: 40px 20px;
+}
+
+.search {
+    margin: 10px 20px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: start; 
+    background-color:#a1a19c;
+}
+
+.status {
+    display: flex;
+}
+
+.status-item {
+    margin: 0 10px;
+    list-style: none;
+}
+.form-group{
+    margin: 10px;
+}
+.form-group>label{
+    margin-bottom: 10px;
+}
+/* ------------DON HANG-----------*/
+u {
+    text-underline-offset: 30px;
+}
+
+h2 {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+th {
+    font-size: large;
+    text-align: center;
+}
+
+.col1 {
+    width: 100%;
+    text-align: left;
+    height: 25px;
+    padding: 5px 35px;
+    font-size: large;
+}
+
+.col2 {
+    width: 55%;
+    text-align: left;
+    height: 25px;
+    padding: 5px;
+    font-size: large
+}
+
+.payment-customer-left {
+    float: left;
+    width: 400px;
+    padding-right: 12px;
+}
+
+.payment-customer-left label {
+    padding: 90px;
+    line-height: 80px;
+    margin-bottom: 20px;
+}
+
+.payment-customer-left input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+.payment-right {
+    float: right;
+    width: 1000px;
+    text-align: center;
+}
+
