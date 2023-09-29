@@ -14,9 +14,6 @@ if(isset($_POST['btnTim']))
 }
 //đóng kết nối
 mysqli_close($con);
-// session_start();
-// if(isset($_SESSION['cart'])){
-    //var_dump($_SESSION['cart']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +25,15 @@ mysqli_close($con);
         .but{
             width: 50px;
         }
+        a{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <?php include_once'./menu.php'?>
     <form action="" method="post">
-        <table>
+        <table align="center">
     <tr>
                 <td colspan="2">
                     <h4>Thông tin tìm kiếm sản phẩm</h4>
@@ -46,6 +46,7 @@ mysqli_close($con);
                 <input type="text" name="txt_masp">
                 </td>
             </tr>
+            <tr></tr>
             <tr>
                 <td class="col1">Tên sản phẩm</td>
                 <td class="col2">
@@ -59,7 +60,8 @@ mysqli_close($con);
                 </td> 
             </tr>
         </table>
-        <table width="900px" height="150px">
+        <br><br>
+        <table width="900px" height="180px" align="center" border="1sp">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>

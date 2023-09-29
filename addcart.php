@@ -14,7 +14,7 @@ session_start();
          if(mysqli_num_rows($dt)>0){
            $sql2 = "UPDATE giohang SET soluong = soluong + $soluong WHERE idsanpham = '$id'";
             mysqli_query($con, $sql2);
-            echo "Số lượng sản phẩm đã được cập nhật.";
+            echo "<script>alert('Số lượng sản phẩm đã được cập nhật')</script>";
          }
          else
          {
