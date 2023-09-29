@@ -110,3 +110,56 @@ a {
     margin-bottom: 10px;
 }
 
+u {
+    text-underline-offset: 30px;
+}
+
+h2 {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+th {
+    font-size: large;
+    text-align: center;
+}
+
+.col1 {
+    width: 100%;
+    text-align: left;
+    height: 25px;
+    padding: 5px 35px;
+    font-size: large;
+}
+
+.col2 {
+    width: 55%;
+    text-align: left;
+    height: 25px;
+    padding: 5px;
+    font-size: large
+}
+
+.payment-customer-left {
+    float: left;
+    width: 400px;
+    padding-right: 12px;
+}
+
+.payment-customer-left label {
+    padding: 90px;
+    line-height: 80px;
+    margin-bottom: 20px;
+}
+
+.payment-customer-left input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+.payment-right {
+    float: right;
+    width: 1000px;
+    text-align: center;
+}
