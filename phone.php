@@ -28,6 +28,7 @@ $data=mysqli_query($con,$sql);
             <tr><td ><?php echo $row['name'] ?></td></tr><input type="hidden" name="name" value="<?php echo $row['name']?>">
             <tr><td><?php echo $row['price'] ?></td></tr><input type="hidden" name="price" value="<?php echo $row['price']?>">
             <tr><td> <input type="hidden" name="id" value="<?php echo $row['id']?>"></td></tr>
+            <input type="hidden" >
             <td> 
                 <a  href="./addcart.php?id=<?php echo $row['id'] ?>&&name=<?php echo $row['name']?>&&price=<?php echo $row['price']?>">Thêm giỏ hàng</a>&nbsp;&nbsp;
                 <input class="btn btn-primary" type="submit" value="Mua ngay" name="buy">   

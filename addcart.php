@@ -6,17 +6,26 @@ session_start();
         $id=$_GET['id'];
         $name=$_GET['name'];
         $price=$_GET['price'];
-       
-        //tạo và thực hiện truy vấn
-        $sql="INSERT INTO giohang(idsanpham,tensanpham,dongia) VALUES('$id','$name','$price')";
+        $soluong=1;
+        $thanhtien='';
+         //Kiểm tra trùng mã id
+         $sql1="SELECT * FROM giohang WHERE idsanpham='$id'";
+         $dt=mysqli_query($con,$sql1);
+         if(mysqli_num_rows($dt)>0){
+           $sql2 = "UPDATE giohang SET soluong = soluong + $soluong WHERE idsanpham = '$id'";
+            mysqli_query($con, $sql2);
+            echo "Số lượng sản phẩm đã được cập nhật.";
+         }
+         else
+         {
+            // tạo và thực hiện truy vấn
+        $sql="INSERT INTO giohang(idsanpham,tensanpham,dongia,soluong,thanhtien) VALUES('$id','$name','$price','$soluong','$thanhtien')";
         $kq=mysqli_query($con,$sql);
-        if($kq){
-          echo "<script>alert('Đã thêm vào giỏ hàng')</script>";  
+        if($kq)
+          echo "<script>alert('Đã thêm vào giỏ hàng')</script>"; 
+        
+         }   
        
-        }else
-        {
-            echo"<script>alert('Thêm mới thất bại')</script>"; 
-        }
         echo "<script>window.location.href='./cart.php'</script>";
         mysqli_close($con);
 ?>
