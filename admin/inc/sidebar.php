@@ -20,12 +20,15 @@
 
             <div class="nav">
                 <div class="d-inline-block nav-item">
-                    <a href="?view=list-post" class="menu-link">
+                    <a href="?mod=posts" class="menu-link">
                         <div class="d-inline-block text-dark menu">
                             <i class="far fa-folder "></i>&nbsp; Bài viết
                         </div>
                     </a>
-
+                    <div class="menu-item">
+                        <a class="menu-link" href="?mod=posts">Danh sách</a>
+                        <a class="menu-link" href="?mod=posts&act=add_post">Thêm mới</a>
+                    </div>
                 </div>
             </div>
             <div class="nav">

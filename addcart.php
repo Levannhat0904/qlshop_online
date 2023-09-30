@@ -23,9 +23,7 @@ session_start();
         $kq=mysqli_query($con,$sql);
         if($kq)
           echo "<script>alert('Đã thêm vào giỏ hàng')</script>"; 
-        
          }   
-       
         echo "<script>window.location.href='./cart.php'</script>";
         mysqli_close($con);
 ?>

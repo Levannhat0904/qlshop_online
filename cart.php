@@ -62,7 +62,7 @@ mysqli_close($con);
             </tr>
         </table>
         <br><br>
-        <table width="1000px" height="200px" align="center" border="1sp">
+        <table width="1000px" height="200px" align="center" border="1">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>
@@ -81,19 +81,19 @@ mysqli_close($con);
             <td><?php echo $row['idsanpham'] ?></td>
             <td ><?php echo $row['tensanpham'] ?></td>
             <td><?php echo $row['dongia'] ?></td>
-            <td><input class="but"type="number" name="soluong" value="<?php echo $row['soluong']?>" width="50px" height="50px" ></td>
+            <td><input class="but" type="number" name="soluong" value="<?php echo $row['soluong']?>" width="25px" height="25px" ></td>
             <td><?php echo $row['dongia']* $row['soluong']?></td>
             <td>
                 <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
                 <a href="">Thanh toán</a>
             </td>
          </tr>
+         
          <?php 
             }
         }
         ?>
-
         </table>
-    </form>
+    </form>  
 </body>
 </html>
