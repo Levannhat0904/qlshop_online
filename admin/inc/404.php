@@ -1,3 +1,3 @@
 <?php 
-    echo "Trang web khong ton tai";
+    echo "Trang web hog ton tai";
 ?>

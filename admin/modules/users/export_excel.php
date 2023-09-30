@@ -14,9 +14,9 @@ if (isset($_POST['btnXuat'])) {
     $rowCount = 1;
 
     // Tạo tiêu đề cho cột trong excel
-    $sheet->setCellValue('A' . $rowCount, 'Mã loại sách');
-    $sheet->setCellValue('B' . $rowCount, 'Tên loại sách');
-    $sheet->setCellValue('C' . $rowCount, 'Mô tả');
+    $sheet->setCellValue('A' . $rowCount, 'Họ và tên');
+    $sheet->setCellValue('B' . $rowCount, 'Email');
+    $sheet->setCellValue('C' . $rowCount, 'Vai trò');
 
     // Định dạng cột tiêu đề
     $sheet->getColumnDimension('A')->setAutoSize(true);

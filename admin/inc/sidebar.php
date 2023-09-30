@@ -9,7 +9,7 @@
             
             <div class="nav">
                 <div class="d-inline-block nav-item">
-                    <a href="?view=list-post" class="menu-link">
+                    <a href="?mod=dashbroad" class="menu-link">
                         <div class="d-inline-block text-dark menu">
                             <i class="far fa-folder "></i>&nbsp; Dashbroad
                         </div>
@@ -17,7 +17,6 @@
 
                 </div>
             </div>
-
             <div class="nav">
                 <div class="d-inline-block nav-item">
                     <a href="?view=list-post" class="menu-link">
