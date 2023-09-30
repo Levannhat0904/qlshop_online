@@ -2,8 +2,19 @@
 // $users = search_data('users');
 // $products = search_data('products');
 // lây danh sách quản trị viên
+// require "nhom1/admin/lib/db.php";
+$con = mysqli_connect('localhost', 'root', '', 'tesr_php') or die('Lỗi kết nối');
 $role_permissions = search_data('role_permission');
+$sql_data_user = "SELECT users.*, permissions.description FROM role_permission,users,permissions WHERE users.id = role_permission.user_id AND permissions.id = role_permission.permission_id";
+$data_user = $conn->query($sql_data_user);
+
 ?>
+<div class="excel">
+
+    <form action="modules/users/export_excel.php" method="post">
+        <input type="submit" value="Xuất Excel" name="btnXuat">
+    </form>
+</div>
  <table class="table table-striped">
         <thead>
             <tr>
