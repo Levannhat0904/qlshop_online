@@ -5,7 +5,7 @@ session_start();
 require "lib/template.php";
 
 //goi header
-$_SESSION['user_id'] = 0;
+$_SESSION['user_id'] = 1;
 //goi nội dung
 if (empty($_SESSION['user_id'])) {
     get_header('header_user.php');
