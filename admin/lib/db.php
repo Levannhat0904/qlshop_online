@@ -18,7 +18,7 @@ function insert_db($table_name, $data = array(), $key = "", $value_key = "")
 {
     global $error;
     global $conn;
-
+    global $last_id;
     if (!empty($data)) {
         if (!empty($key) || !empty($value_key)) {
             //xử lí trong th ins có kiểm tra khóa
@@ -37,6 +37,8 @@ function insert_db($table_name, $data = array(), $key = "", $value_key = "")
         $sql = "INSERT INTO $table_name ($columns) VALUES ($values)";
         // Thực thi câu truy vấn
         if ($conn->query($sql) === TRUE) {
+            $last_id = $conn->insert_id;
+            // echo $last_id;
             echo "<script>alert('Thêm mới thành công');</script>";
             return true; // Thêm dữ liệu thành công
         } else {
@@ -83,13 +85,13 @@ function search_data($table_name, $data = "", $datafield = "", $bool = true)
             $sql = "SELECT * FROM  $table_name  WHERE $datafield= {$data}";
         }else{
             $sql = "SELECT * FROM  $table_name  WHERE $datafield= '{$data}'";
+            echo $sql;
         }
     } else if ($data != "" && $bool == false) {
         $sql = "SELECT * FROM $table_name WHERE $datafield LIKE '%$data%'";
     } else {
         $sql = "SELECT * FROM  $table_name  ";
     }
-    // echo $sql;
     $result = $conn->query($sql);
     return $result;
 }

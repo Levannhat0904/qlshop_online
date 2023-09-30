@@ -1,6 +1,7 @@
 <?php 
 //Kết nối database
-$con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+require_once './connectdb.php';
 //Thực hiện truy vấn
 $sql="SELECT * FROM giohang ";
 $data=mysqli_query($con,$sql);
