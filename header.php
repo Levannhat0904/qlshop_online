@@ -84,7 +84,8 @@
 		
 	</style>
 	<link rel="stylesheet" href="./Css/css_bootstrap.min.css" >
-	<base href="http://localhost/qlshop_online/phone.php" target="_self">
+	<!-- <base href="http://localhost/qlshop_online/phone.php" target="_self"> -->
+	<base href="http://localhost:8088/nhom1/" target="_self">
 	
 </head>
 

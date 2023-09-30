@@ -10,17 +10,12 @@ get_sidebar();
 ?>
 <!-- xử lý nội dung -->
 <?php
-
+// insert_db('users', ['name' => 'nhatlư', 'email' => 'hi@gmail.com', 'password' => '123456']);
+// // global $last_id;
+// echo $last_id;
 //goi nội dung
 $mod = !empty($_GET['mod']) ? $_GET['mod'] : 'home';
 $act = !empty($_GET['act']) ? $_GET['act'] : 'index';
-// kiểm tra quyền
-// $sql = "SELECT * FROM role_permission WHERE user_id = 3";
-// $result = mysqli_query($conn, $sql);
-// $num = mysqli_num_rows($result);
-// if ($num == 0) {
-//     echo "Bạn không có quyền truy cập";
-// }
 $sql = "SELECT * FROM role_permission WHERE user_id = {$_SESSION['user_id']} ";
 $list_per = mysqli_query($conn, $sql);
 $list_mod = array();
@@ -32,14 +27,14 @@ while ($row = $list_per->fetch_assoc()) {
     $mod_name = explode('-', $name_per['name']); //lấy ra tên module
     $list_mod[] = $mod_name[0];
 }
-print_r($list_mod);
-echo $mod;
+// print_r($list_mod);
+// echo $mod;
 if (in_array($mod, $list_mod)|| in_array("admin", $list_mod)) {
     $path = "modules/{$mod}/{$act}.php";
     if (file_exists($path)) {
         include $path;
     } else {
-        echo "bạn khong được quyền truy cập";
+        echo "Trang không tồn tại";
         // include "inc/404.php";
         // include $path;
     }

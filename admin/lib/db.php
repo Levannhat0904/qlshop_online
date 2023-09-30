@@ -18,7 +18,7 @@ function insert_db($table_name, $data = array(), $key = "", $value_key = "")
 {
     global $error;
     global $conn;
-
+    global $last_id;
     if (!empty($data)) {
         if (!empty($key) || !empty($value_key)) {
             //xử lí trong th ins có kiểm tra khóa
@@ -37,6 +37,8 @@ function insert_db($table_name, $data = array(), $key = "", $value_key = "")
         $sql = "INSERT INTO $table_name ($columns) VALUES ($values)";
         // Thực thi câu truy vấn
         if ($conn->query($sql) === TRUE) {
+            $last_id = $conn->insert_id;
+            // echo $last_id;
             echo "<script>alert('Thêm mới thành công');</script>";
             return true; // Thêm dữ liệu thành công
         } else {
