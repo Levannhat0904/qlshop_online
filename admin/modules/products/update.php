@@ -71,15 +71,20 @@ if (isset($_POST['btn_update'])) {
     $data_product_color = search_data("product_color", $id, 'id_product_color');
     
     while ($data_product_color1 = mysqli_fetch_assoc($data_product_color)) {
-        $product_color[] = $data_product_color1['color_id'];
+        $product_color[] = $data_product_color1['color_id'];//danh sach màu sắc lúc đầu
     }
+    // th1 cập nhật thêm màu it hơn so với lúc đầu
+    // if(count($color) == count($product_color)){
+    //     $data['product_color'] = $color;
+    // }
     foreach ($color as $key => $value) {
         // th1 cập nhật thêm màu nhiều hơn so với lúc đầu
         if (!in_array($value, $product_color)) {
             $data_color['color_id'] = $value;
         }
-        // th1 cập nhật thêm màu it hơn so với lúc đầu
+        
     }
+
     // cập nhật sản Phẩm
     if(!empty($data)){
         update_db('products', $data, 'id', $id);

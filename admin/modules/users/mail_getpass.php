@@ -10,6 +10,8 @@ require 'plugins/PHPMailer/src/SMTP.php';
 $email = '';
 if (isset($_POST['btn_getpass'])) {
     $email = $_POST['email'];
+    $email_md5 = md5($email);
+    $url = 'http://localhost:8088/nhom1/admin/?mod=users&act=reset&id='.$email_md5;
 }
 $users = search_data('users', $email, 'email');
 // print_r($users);
@@ -57,6 +59,7 @@ if ($users->num_rows != 0) {
         // Thay thế giá trị của biến trong nội dung email
         $htmlBody = str_replace('<?php echo $username; ?>', $username, $htmlBody);
         $htmlBody = str_replace('<?php echo $newPassword; ?>', $newPassword, $htmlBody);
+        $htmlBody = str_replace('<?php echo $url; ?>', $url, $htmlBody);
         // Assign the HTML content to the email body
         $mail->Body = $htmlBody;
         // $mail->Body    = 'This is the HTML message body <b>in bold!</b>';

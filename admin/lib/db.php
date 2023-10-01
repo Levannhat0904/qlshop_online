@@ -62,6 +62,7 @@ function update_db($table_name, $data = array(), $key, $value)
     if (!empty($data)) {
         if (!check_trung_key($table_name, $key, $value)) {
             return false;
+            // trùng tức là tồn tại
         } else {
             $string = "";
             foreach ($data as $k => $v) {
@@ -69,6 +70,7 @@ function update_db($table_name, $data = array(), $key, $value)
             }
             $string = substr($string, 0, -1);
             $sql =  "UPDATE $table_name SET $string WHERE $key = '$value'";
+            echo $sql;
             if ($conn->query($sql) === TRUE) {
                 return true; // update dữ liệu thành công
             } else {

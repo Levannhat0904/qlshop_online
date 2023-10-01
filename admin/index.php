@@ -5,12 +5,12 @@ session_start();
 require "lib/template.php";
 
 //goi header
-$_SESSION['user_id'] = 1;
+// $_SESSION['user_id'] = 0;
 //goi nội dung
 if (empty($_SESSION['user_id'])) {
     get_header('header_user.php');
     $mod = 'users';
-    $act =['login','reg','getpass','mail_getpass'];
+    $act =['login','reg','getpass','mail_getpass','logout','reset'];
     if(isset($_GET['act']) && in_array($_GET['act'], $act)){
         $act = $_GET['act'];
     }else{
@@ -49,6 +49,7 @@ if (empty($_SESSION['user_id'])) {
         echo "bạn khong được quyền truy cập";
         // include "inc/404.php";
     }
+    get_footer();
 }
 ?>
 <?php
