@@ -1,3 +1,8 @@
+<?php 
+//Kết nối database
+// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+require_once './connectdb.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +11,7 @@
     <title>Document</title>
     <base href="http://localhost/qlshop_online/phone.php" target="_self">
     <!-- <base href="http://localhost:8088/nhom1/" target="_self"> -->
-    <link rel="stylesheet" href="./css/menu.css">
-   
+    <link rel="stylesheet" href="./css/menu.css">  
 </head>
 <body>
     <div id="wrapper">

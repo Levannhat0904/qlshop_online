@@ -1,9 +1,9 @@
 <?php 
 //Kết nối database
-$con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
-//require_once './connectdb.php';
+// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+require_once './connectdb.php';
 //Thực hiện truy vấn
-$sql="SELECT * FROM giohang ";
+$sql="SELECT giohang.*, color.name AS color_name FROM giohang INNER JOIN color ON giohang.mausac = color.id";
 $data=mysqli_query($con,$sql);
 //Tìm kiếm
 if(isset($_POST['btnTim']))
@@ -63,11 +63,12 @@ mysqli_close($con);
             </tr>
         </table>
         <br><br>
-        <table width="1000px" height="200px" align="center" border="1">
+        <table width="1000px" height="250px" align="center" border="1">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
+                <th>Màu sắc</th>
                 <th>Đơn giá</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
@@ -81,9 +82,10 @@ mysqli_close($con);
             <td><?php echo $i++ ?></td>
             <td><?php echo $row['idsanpham'] ?></td>
             <td ><?php echo $row['tensanpham'] ?></td>
+            <td><?php echo $row['color_name']?></td>
             <td><?php echo $row['dongia'] ?></td>
-            <td><input class="but" type="number" name="soluong" value="<?php echo $row['soluong']?>" width="25px" height="25px" ></td>
-            <td><?php echo $row['dongia']* $row['soluong']?></td>
+            <td><?php echo $row['soluong']?> </td>
+            <td><?php echo $row['soluong']*$row['dongia']?></td>
             <td>
                 <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
                 <a href="">Thanh toán</a>
