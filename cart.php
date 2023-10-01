@@ -10,7 +10,7 @@ if(isset($_POST['btnTim']))
 {
     $tensanpham=$_POST['txt_tensp'];
     $idsanpham=$_POST['txt_masp'];
-    $sqltk="SELECT * FROM giohang WHERE  idsanpham like '%$idsanpham%'and tensanpham like '%$tensanpham%'";
+    $sqltk="SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id WHERE giohang.idsanpham LIKE '%$idsanpham%' AND giohang.tensanpham LIKE '%$tensanpham%'";
     $data=mysqli_query($con,$sqltk);
 }
 //đóng kết nối

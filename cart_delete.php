@@ -1,7 +1,7 @@
 <?php 
     $idsanpham=$_GET['idsanpham'];
     //kết nối db
-    $con=mysqli_connect('localhost','root','','test2') or die;
+    require_once './connectdb.php';
     //thực hiện xóa
     $sql="DELETE FROM giohang WHERE idsanpham='$idsanpham'";
     $kq=mysqli_query($con,$sql);
