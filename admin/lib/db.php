@@ -85,7 +85,7 @@ function search_data($table_name, $data = "", $datafield = "", $bool = true)
             $sql = "SELECT * FROM  $table_name  WHERE $datafield= {$data}";
         }else{
             $sql = "SELECT * FROM  $table_name  WHERE $datafield= '{$data}'";
-            echo $sql;
+            // echo $sql;
         }
     } else if ($data != "" && $bool == false) {
         $sql = "SELECT * FROM $table_name WHERE $datafield LIKE '%$data%'";

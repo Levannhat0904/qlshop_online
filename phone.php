@@ -24,6 +24,7 @@ $data1 = mysqli_query($con, $sql);
                 color: black;
             }
         </style>
+        <base href="http://localhost:8088/nhom1/" target="_self">
 </head>
 <body>
     <?php include_once './menu.php' ?>
@@ -35,7 +36,7 @@ $data1 = mysqli_query($con, $sql);
                 $i = 0;
                 while ($row = mysqli_fetch_array($data)) {
             ?>
-                    <a href="./product_detail.php?id=<?php echo $row['id'] ?>">
+                    <a href="product_detail.php?id=<?php echo $row['id'] ?>">
                         <form action="" method="POST" class="box">
                             <img src="<?= $row['img']; ?>" class="image" alt="">
                             <h3 class="name"><?= $row['name'] ?></h3>
