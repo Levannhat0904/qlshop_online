@@ -25,7 +25,7 @@ if(isset($_POST['btn_add_cart'])) {
     $productName = $row['name']; // Lấy tên sản phẩm từ biến $row 
     $quantity = $_POST['qty'];
     $price=$row['price'];
-    $thanhtien='';
+    $thanhtien=$price*$quantity;
     $selectedColor = $_POST['color'];// Biến lưu trữ tên màu sắc
     if($quantity==''){
         echo "<script>alert('Chưa nhập số lượng')</script>";
