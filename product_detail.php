@@ -27,7 +27,11 @@ if(isset($_POST['btn_add_cart'])) {
     $price=$row['price'];
     $thanhtien='';
     $selectedColor = $_POST['color'];// Biến lưu trữ tên màu sắc
-    //Kiểm tra trùng mã id
+    if($quantity==''){
+        echo "<script>alert('Chưa nhập số lượng')</script>";
+        echo "<script>document.getElementById('number').focus()</script>";
+    }else{
+        //Kiểm tra trùng mã id
     $sql1="SELECT * FROM giohang WHERE idsanpham='$productId'";
     $dt=mysqli_query($con,$sql1);
     if(mysqli_num_rows($dt)>0){
@@ -42,8 +46,11 @@ if(isset($_POST['btn_add_cart'])) {
    $kq=mysqli_query($con,$sql);
    if($kq)
      echo "<script>alert('Đã thêm vào giỏ hàng')</script>"; 
-    }   
-   echo "<script>window.location.href='./cart.php'</script>";
+    }  
+     echo "<script>window.location.href='./cart.php'</script>";
+    }
+    
+   
 }
 ?>
 <!DOCTYPE html>
