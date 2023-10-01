@@ -1,5 +1,5 @@
 <?php
-require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+// require_once '/xampp/htdocs/qlshop_online/connectdb.php';
 
 $id = $_GET['id'];
 //Tìm kiếm theo id
