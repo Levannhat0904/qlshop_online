@@ -1,16 +1,16 @@
 <?php
-require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+// require_once '/xampp/htdocs/qlshop_online/connectdb.php';
 
 // Truy vấn cơ sở dữ liệu để lấy danh sách bài viết
 $sql= "SELECT * FROM post";
-$data = mysqli_query($con, $sql);
+$data = mysqli_query($conn, $sql);
 if (isset($_GET['btnTim'])) {
     $id = $_GET['id'];
     $tim = "SELECT * FROM post WHERE id ='$id'";
     $data = mysqli_query($con, $tim);
 }
 // Đóng kết nối
-mysqli_close($con);
+mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">

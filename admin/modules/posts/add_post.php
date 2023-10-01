@@ -1,5 +1,5 @@
 <?php
-require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+// require_once '/xampp/htdocs/qlshop_online/connectdb.php';
 
 if (isset($_POST['btnAdd'])) {
     //$id = $_POST['id'];

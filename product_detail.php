@@ -1,5 +1,6 @@
 <?php
 require_once './connectdb.php';
+session_start();
 //Thực hiện truy vấn
 $sql = "SELECT * FROM products WHERE id = '$_GET[id]'";
 $data = mysqli_query($con, $sql);
@@ -8,8 +9,15 @@ $sql_color = "SELECT color.* FROM products, color,product_color WHERE products.i
 $data_color = mysqli_query($con, $sql_color);
 // xử lí khi mua ngay
 if(isset($_POST['btn_buy'])){
-    // print_r($_POST);
-    header('location:./buynow.php?id='.$_GET['id'].'&&name='.$_POST['name'].'&&price='.$_POST['price'] .'&&color='.$_POST['color'] .'&&qty='.$_POST['qty']);
+    print_r($_POST);
+    // tạo session
+    $_SESSION['product_order']=array();
+    $_SESSION['product_order']['id']=$_GET['id'];
+    // $_SESSION['product_order']['name']=$_POST['name'];
+    $_SESSION['product_order']['price']=$_POST['price'];
+    $_SESSION['product_order']['color']=$_POST['color'];
+    $_SESSION['product_order']['qty']=$_POST['qty'];
+    header('location:./buynow.php');
 }
 
 ?>
@@ -54,7 +62,7 @@ if(isset($_POST['btn_buy'])){
                     </div>
                     <div class="mb-3">
                         <label for="number">Giá:</label>
-                        <input type="number" class="form-control" id="number" value="<?= $row['price'] ?>" disabled name="price">
+                        <input type="number" class="form-control" id="number" value="<?= $row['price'] ?>" name="price">
                     </div>
                     <input type="submit" value="Đặt hàng" class="btn btn-primary" name="btn_buy">
                     <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-primary" style="margin-left: 10px;" name="btn_add_cart">
