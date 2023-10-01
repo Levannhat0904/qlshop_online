@@ -9,6 +9,18 @@
 <body>
     <?php
         include_once './phone.php' 
-        ?>
+        // thêm đơn hàng hàng
+
+        // $con=mysqli_connect('localhost','root','','qlshop_online') or die('Lỗi kết nối');
+        // // $sql ="insert into oders (id,name,phone_number,address, status) values('dh01', 'nhat', '567898', 'thanh hóa', 'đang chờ xác nhận')";
+        // $sql = "UPDATE orders SET status = 'thành công' WHERE id = 'dh01'";
+        // if (mysqli_query($con, $sql)) {
+        //     echo "Thêm dữ liệu thành công";
+        // } else {
+        //     echo "Lỗi: " . mysqli_error($con);
+        // }
+        // ======>ok
+
+?>
 </body>
 </html>

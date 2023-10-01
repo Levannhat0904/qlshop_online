@@ -123,7 +123,7 @@
 				</ul>
 			</li>
 				<li><a href="" target="_self">Máy tính bảng</a></li>
-				<li><a href=" "target="_self">Phụ kiện</a></li>
+				<li><a href=""target="_self">Phụ kiện</a></li>
 			</ul>
 		</div>	
 	</div>
