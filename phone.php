@@ -1,7 +1,7 @@
 <?php
 //Kết nối database
-// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
-require_once './connectdb.php';
+$con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+//require_once './connectdb.php';
 //Thực hiện truy vấn
 $sql="SELECT * FROM products";
 $data=mysqli_query($con,$sql);
@@ -13,6 +13,7 @@ $data=mysqli_query($con,$sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
         <link rel="stylesheet" href="css/css_bootstrap.min.css">
+        <link rel="stylesheet" href="./css/menu.css">
         <link rel="stylesheet" href="css/style2.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <style>
