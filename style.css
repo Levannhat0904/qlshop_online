@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  .news-card {
+    width: 1200px;
+    height: 280px;
+    margin-bottom: 30px;
+    border: 0px solid #0d0c0c;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-content {
+    padding: 20px;
+  }
+  
+  
