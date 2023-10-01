@@ -1,8 +1,3 @@
-<?php 
-//Kết nối database
-// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
-require_once './connectdb.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +6,8 @@ require_once './connectdb.php';
     <title>Document</title>
     <!-- <base href="http://localhost/qlshop_online/phone.php" target="_self"> -->
     <base href="http://localhost:8088/nhom1/" target="_self">
-    <link rel="stylesheet" href="./css/menu.css">  
+    <link rel="stylesheet" href="./css/menu.css">
+   
 </head>
 <body>
     <div id="wrapper">
@@ -44,7 +40,7 @@ require_once './connectdb.php';
                 </ul>
 
             </li>
-                <li><a href="">Blog</a></li>
+                <li><a href="./post.php">Blog</a></li>
                 <li><a href="">Liên hệ</a></li>
                 <li><a href="./cart.php">Đơn hàng</a></li>
                 <li><a href="./admin/modules/users/login.php">Đăng nhập</a></li>
