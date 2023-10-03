@@ -1,14 +1,17 @@
 <?php
-// require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+require_once '/xampp/htdocs/qlshop_online/connectdb.php';
 
 if (isset($_POST['btnAdd'])) {
     //$id = $_POST['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $img = $_POST['img'];
+    $img = basename($_FILES['img']['name']);
+    $target_dir = "uploads/";
+    $target_file = $target_dir . $img;
+    move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
     $tim = "SELECT * FROM post WHERE id ='$id'";
     $data = mysqli_query($con, $tim);
-            $sql = "INSERT INTO post(content,title,image_path) VAlUES ('$title','$content','$img')";
+            $sql = "INSERT INTO post(content,title,image_path) VAlUES ('$content','$title','$target_file')";
             $kq = mysqli_query($con, $sql);
             if ($kq) {
                 echo "<script> alert('Thêm bài viết thành công')</script>";
@@ -24,7 +27,8 @@ if (isset($_POST['btnAdd'])) {
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm bài viết</title>
-    <link ref="stylesheet" href="../css/css_bootstrap.min.css">
+    <link rel="stylesheet" href="./css/css_bootstrap.min.css">
+    <link rel="stylesheet" href="./css/ds.css">
     <style>
         .col1 {
 			width: 15%;
@@ -36,33 +40,28 @@ if (isset($_POST['btnAdd'])) {
 </head>
 
 <body>
-    <form action="" method="post" >
-        <table width="800" border="2" cellspacing="0" cellpadding="5" align="center">
-            <tr>
-                <td colspan="4" align="center" style="background-color: grey;"><h2><b>Thêm bài viết</b></h2></td>
-            </tr>
-            <tr>
-                <th class = "col1">Tiêu đề </td>
-                <td style="padding-left:10px"><input type="text" class="form-control" name="title"  ></td>
-            </tr>
-            <tr>
-                <th class = "col1">Content </td>
-                <td style="padding-left:10px" ><textarea name="content" id="content" placeholder="Đây là nội dung..."  rows="10" cols="80"></textarea></td>
-            </tr>
-            <tr>
-                <th class = "col1">Ảnh </td>
+<div class="container">
+        <h2>Thêm bài viết</h2>
+        <form action="" method="POST" enctype="multipart/form-data" >
+            <div class="form-group">
+                <label for="title">Tiêu đề:</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="content">Nội dung:</label>
+                <textarea class="form-control" id="content" name="content" rows="10" cols="80"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Ảnh:</label>
                 <td style="padding-left:10px">
                     <input type="hidden" name="size" value="1000000">
                     <input type="file" name="img" ><br><br>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" class="btn btn-primary" name="btnAdd" value="Thêm">
-                </td>
-            </tr>
-        </table>
-    </form>
+            </div>
+            <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>
+            <a href="index.php" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
 </body>
 
 </html>
