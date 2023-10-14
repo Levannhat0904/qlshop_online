@@ -1,19 +1,17 @@
-<?php 
-//Kết nối database
-// $con=mysqli_connect('localhost','root','','test2') or die('Lỗi kết nối');
+<?php
+// Kết nối database
 require_once './connectdb.php';
-//Thực hiện truy vấn
-$sql="SELECT giohang.*, color.name AS color_name FROM giohang INNER JOIN color ON giohang.mausac = color.id";
-$data=mysqli_query($con,$sql);
-//Tìm kiếm
-if(isset($_POST['btnTim']))
-{
-    $tensanpham=$_POST['txt_tensp'];
-    $idsanpham=$_POST['txt_masp'];
-    $sqltk="SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id WHERE giohang.idsanpham LIKE '%$idsanpham%' AND giohang.tensanpham LIKE '%$tensanpham%'";
-    $data=mysqli_query($con,$sqltk);
+// Thực hiện truy vấn
+$sql = "SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id";
+$data = mysqli_query($con, $sql);
+// Tìm kiếm
+if (isset($_POST['btnTim'])) {
+    $tensanpham = $_POST['txt_tensp'];
+    $idsanpham = $_POST['txt_masp'];
+    $sqltk = "SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id WHERE giohang.idsanpham LIKE '%$idsanpham%' AND giohang.tensanpham LIKE '%$tensanpham%'";
+    $data = mysqli_query($con, $sqltk);
 }
-//đóng kết nối
+// Đóng kết nối
 mysqli_close($con);
 ?>
 <!DOCTYPE html>
@@ -24,7 +22,8 @@ mysqli_close($con);
     <title>Document</title>
     <style>
         .but{
-            width: 50px;
+            text-align: center;
+            width: 30px;
         }
     </style>
     <link rel="stylesheet" href="./css/menu.css">
@@ -91,7 +90,6 @@ mysqli_close($con);
                         <td id="thanh-tien-<?php echo $row['idsanpham'] ?>"><?php echo number_format($thanhTien,0,",",".") ?></td>
                         <td>
                             <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
-                            <a href="./buynow.php">Thanh toán</a>
                         </td>   
                     </tr>
             <?php 
@@ -105,7 +103,8 @@ mysqli_close($con);
             </tr>
             <tr>
                 <td colspan="8" align="right">
-                    <a class="btn btn-primary" href="./delete_allcart.php">Xóa tất cả</a>
+                    <a class="btn btn-primary" href="./delete_allcart.php">Xóa tất cả</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-primary" href="">Thanh toán</a>
                 </td>
             </tr>    
         </table>

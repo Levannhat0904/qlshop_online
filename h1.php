@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,10 +31,10 @@
             <a href="./index.php"><img class="header__logo-img" src="./picture/logo.png" alt="" ></a>
             </div>
             <div class="header__search">
-               <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm" name="txt_sp">
-               <button class="header__search-btn" name="">
-                <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
-               </button>
+               <form class="header__search" action="" method="post">
+                <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm" name="txt_sp">
+                <input type="submit" value="Tìm" name="btnTim" class="header__search-btn">
+                 </form> 
             </div>
             <div class="header__cart">
                 <a href="./cart.php"><i class="header__cart-icon fa-solid fa-cart-shopping"></i></a>    
