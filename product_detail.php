@@ -28,13 +28,8 @@ if(isset($_POST['btn_add_cart'])) {
     $thanhtien=$row['price']*$row['qty'];
     $selectedColor = $_POST['color'];// Biến lưu trữ tên màu sắc
     if($quantity==''){
-        // echo "<script>alert('Chưa nhập số lượng')</script>";
-        // echo "<script>document.getElementById('number').focus()</script>";
-        $sql1="INSERT INTO giohang(idsanpham,tensanpham,mausac,dongia,soluong,thanhtien) VALUES('$productId','$productName','$selectedColor','$price',1,'$thanhtien')";
-        $kq1=mysqli_query($con,$sql1);
-        if($kq1)
-         echo "<script>alert('Đã thêm vào giỏ hàng')</script>"; 
-         echo "<script>window.location.href='./cart.php'</script>";
+        echo "<script>alert('Chưa nhập số lượng')</script>";
+        echo "<script>document.getElementById('number').focus()</script>";    
     }else{
         //Kiểm tra trùng mã id
     $sql1="SELECT * FROM giohang WHERE idsanpham='$productId'";
