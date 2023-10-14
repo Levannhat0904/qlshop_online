@@ -44,7 +44,7 @@ require_once './connectdb.php';
                 </ul>
 
             </li>
-                <li><a href="">Blog</a></li>
+                <li><a href="./post.php">Blog</a></li>
                 <li><a href="">Liên hệ</a></li>
                 <li><a href="./cart.php">Đơn hàng</a></li>
                 <li><a href="./admin/modules/users/login.php">Đăng nhập</a></li>

@@ -26,16 +26,14 @@ mysqli_close($con);
         .but{
             width: 50px;
         }
-        a{
-            text-decoration: none;
-        }
     </style>
     <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/css_bootstrap.min.css">
 </head>
 <body>
-    <?php include_once'./menu.php'?>
+    <?php include_once'./h1.php'?>
     <form action="" method="post">
-        <table align="center">
+        <table align="center" height="200px">
     <tr>
                 <td colspan="2">
                     <h4>Thông tin tìm kiếm sản phẩm</h4>
@@ -63,7 +61,7 @@ mysqli_close($con);
             </tr>
         </table>
         <br><br>
-        <table width="1000px" height="250px" align="center" border="1">
+        <table width="1200px" height="250px" align="center" border="1">
             <tr align="center">
                 <th >STT</th>
                 <th>Mã sản phẩm</th>
@@ -74,29 +72,67 @@ mysqli_close($con);
                 <th>Thành tiền</th>
             </tr>
             <?php 
-        if(isset($data)&& $data!=null){
-            $i=1;
-            while($row=mysqli_fetch_array($data)){
-         ?>
-         <tr align="center">
-            <td><?php echo $i++ ?></td>
-            <td><?php echo $row['idsanpham'] ?></td>
-            <td ><?php echo $row['tensanpham'] ?></td>
-            <td><?php echo $row['color_name']?></td>
-            <td><?php echo $row['dongia'] ?></td>
-            <td><?php echo $row['soluong']?> </td>
-            <td><?php echo $row['soluong']*$row['dongia']?></td>
-            <td>
-                <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
-                <a href="">Thanh toán</a>
-            </td>
-         </tr>
-         
-         <?php 
+               if (isset($data) && $data != null) {
+                $i = 1;
+                $totalAmount = 0; // Biến để tính tổng tiền
+                while ($row = mysqli_fetch_array($data)) {
+                    $thanhTien = $row['soluong'] * $row['dongia'];
+                    $totalAmount += $thanhTien;
+                    ?>
+                    <tr align="center">
+                        <td><?php echo $i++ ?></td>
+                        <td><?php echo $row['idsanpham'] ?></td>
+                        <td><?php echo $row['tensanpham'] ?></td>
+                        <td><?php echo $row['color_name'] ?></td>
+                        <td><?php echo number_format($row['dongia'],0,",",".")?></td>
+                        <td>
+                            <input class="but" type="number" name="txt_soluong" value="<?php echo $row['soluong'] ?>" onkeyup="updatePrice(this, <?php echo $row['dongia'] ?>)" min="1" width="50px">
+                        </td>
+                        <td id="thanh-tien-<?php echo $row['idsanpham'] ?>"><?php echo number_format($thanhTien,0,",",".") ?></td>
+                        <td>
+                            <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
+                            <a href="./buynow.php">Thanh toán</a>
+                        </td>   
+                    </tr>
+            <?php 
+                }
             }
-        }
-        ?>
+            ?>
+            <tr>
+                <td colspan="8" align="right">
+                    <h5>Tổng tiền: <span id="tong-tien"><?php echo number_format($totalAmount,0,",","." ) ?>đ</span></h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8" align="right">
+                    <a class="btn btn-primary" href="./delete_allcart.php">Xóa tất cả</a>
+                </td>
+            </tr>    
         </table>
+        
     </form>  
+    <script>
+        function updatePrice(input, dongia) {
+            var soluong = input.value;
+            var thanhtien = soluong * dongia;
+            var idsanpham = input.parentNode.parentNode.cells[1].innerHTML;
+            document.getElementById('thanh-tien-' + idsanpham).innerHTML = thanhtien;
+            var total = calculateTotal();
+            document.getElementById('tong-tien').innerHTML = total;
+        }
+        function calculateTotal() {
+            var table = document.querySelector('table');
+            var rows = table.querySelectorAll('tr');
+            var total = 0;
+            for (var i = 1; i < rows.length - 1; i++) {
+                var soluong = rows[i].querySelector('input[name="txt_soluong"]').value;
+                var dongia = rows[i].querySelector('td:nth-child(5)').innerHTML;
+                var thanhtien = soluong * dongia;
+                total += thanhtien;
+            }
+            return total;
+        }
+    </script>
+    
 </body>
 </html>

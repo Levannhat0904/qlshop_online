@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,7 @@
 
 <body>
     <?php
-    include_once './menu.php';
+    include_once './h1.php';
     require('connectdb.php');
 
     // Lấy danh sách bài viết từ cơ sở dữ liệu

@@ -25,11 +25,16 @@ if(isset($_POST['btn_add_cart'])) {
     $productName = $row['name']; // Lấy tên sản phẩm từ biến $row 
     $quantity = $_POST['qty'];
     $price=$row['price'];
-    $thanhtien=$price*$quantity;
+    $thanhtien=$row['price']*$row['qty'];
     $selectedColor = $_POST['color'];// Biến lưu trữ tên màu sắc
     if($quantity==''){
-        echo "<script>alert('Chưa nhập số lượng')</script>";
-        echo "<script>document.getElementById('number').focus()</script>";
+        // echo "<script>alert('Chưa nhập số lượng')</script>";
+        // echo "<script>document.getElementById('number').focus()</script>";
+        $sql1="INSERT INTO giohang(idsanpham,tensanpham,mausac,dongia,soluong,thanhtien) VALUES('$productId','$productName','$selectedColor','$price',1,'$thanhtien')";
+        $kq1=mysqli_query($con,$sql1);
+        if($kq1)
+         echo "<script>alert('Đã thêm vào giỏ hàng')</script>"; 
+         echo "<script>window.location.href='./cart.php'</script>";
     }else{
         //Kiểm tra trùng mã id
     $sql1="SELECT * FROM giohang WHERE idsanpham='$productId'";
@@ -49,13 +54,10 @@ if(isset($_POST['btn_add_cart'])) {
     }  
      echo "<script>window.location.href='./cart.php'</script>";
     }
-    
-   
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Chi Tiết Sản Phẩm</title>
     <meta charset="utf-8">
@@ -63,17 +65,16 @@ if(isset($_POST['btn_add_cart'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
-    <?php include_once'./menu.php'?>
+   <?php include_once'./h1.php'?>
     <div class="product-detail mt-5">
         <div class="container" style="display: flex;">
             <div class="img">
-                <div class="header">
+                <!-- <div class="header"> -->
                     <h3><?= $row['name'] ?></h3>
-                </div>
+                <!-- </div> -->
                 <div class="card" style="width:400px">
-                    <img class="card-img-top" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/v/n/vn_iphone_15_blue_pdp_image_position-1a_blue_color_1_4.jpg" alt="Card image" style="width:100%">
+                    <img class="card-img-top" src="<?= $row['img'] ?>" alt="Card image" style="width:100%">
                 </div>
             </div>
             <div class="detail col-6" style="margin-left: 30px;">
@@ -97,6 +98,7 @@ if(isset($_POST['btn_add_cart'])) {
                         <input type="number" class="form-control" id="number" value="<?= $row['price'] ?>" readonly name="price">
                     </div>
                     <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                    <input type="hidden" name="cat_product_id" value="<?= $row['cat_product_id']?>">
                     <input type="submit" value="Đặt hàng" class="btn btn-primary" name="btn_buy">
                     <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-primary" style="margin-left: 10px;" name="btn_add_cart">
                 </form>

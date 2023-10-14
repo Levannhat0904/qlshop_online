@@ -6,14 +6,13 @@ require_once './connectdb.php';
 $sql = "SELECT * FROM products";
 $data = mysqli_query($con, $sql);
 $data1 = mysqli_query($con, $sql);
-?>
-<!DOCTYPE html>
+?> 
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-
         <link rel="stylesheet" href="css/css_bootstrap.min.css">
         <link rel="stylesheet" href="./css/menu.css">
         <link rel="stylesheet" href="css/style2.css">
@@ -40,6 +39,7 @@ $data1 = mysqli_query($con, $sql);
                             <img src="<?= $row['img']; ?>" class="image" alt="">
                             <h3 class="name"><?= $row['name'] ?></h3>
                             <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                            <input type="hidden" name="cat_product_id" value="<?= $row['cat_product_id']?>">
                             <div class="flex">
                                 <p class="price"><i class=""></i><?= $row['price'] ?></p>
                             </div>
@@ -56,5 +56,4 @@ $data1 = mysqli_query($con, $sql);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="js/script.js"></script>
 </body>
-
 </html>
