@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['btn_getpass'])) {
     $email = $_POST['email'];
-    echo $email;
+    // echo $email;
 }
 ?>
 <div class="form-container">

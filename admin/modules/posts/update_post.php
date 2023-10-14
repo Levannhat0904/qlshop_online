@@ -1,6 +1,5 @@
 <?php
-// require_once '/xampp/htdocs/qlshop_online/connectdb.php';
-
+require_once '/xampp/htdocs/qlshop_online/connectdb.php';
 $id = $_GET['id'];
 //Tìm kiếm theo id
 $sqltk = "SELECT * FROM post WHERE id='$id'";
@@ -16,7 +15,7 @@ if (isset($_POST['btnSave'])) {
     $img = $_POST['img'];
     $sql = "UPDATE post SET content ='$content', title ='$title', image_path ='$img' WHERE id='$id'";
     $kq = mysqli_query($con, $sql);
-    if($kq) {
+    if ($kq) {
         echo "<script> alert('Sửa thành công')</script>";
         header("location: index.php");
         exit;
@@ -40,53 +39,77 @@ mysqli_close($con);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa bài viết</title>
-    <link rel="stylesheet" href="css/css_bootstrap.min.css">
+    <link rel="stylesheet" href="./css/css_bootstrap.min.css">
+    <link rel="stylesheet" href="./css/ds.css">
     <style>
-        .col1 {
-			width: 15%;
-			text-align: left;
-			height: 25px;
-			padding: 5px 35px;
-		}
-    </style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group textarea {
+      height: 150px;
+    }
+
+    .form-group input[type="submit"] {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-    <form action="" method="POST">
-        <table width="800" border="2" cellspacing="0" cellpadding="5" align="center">
-            <tr>
-                <td colspan="4" align="center" style="background-color: grey;">
-                    <h2><b>Cập nhật bài viết</b></h2>
-                </td>
-            </tr>
-            <tr>
-                <th class="col1">Tiêu đề </td>
-                <td style="padding-left:10px">
-                    <input type="text" class="form-control" name="title" value="<?php echo $row['title']; ?>">
-                </td>
-                <input class="form-control" type="hidden" name="id" value="<?php echo $row['id']; ?>">
-            </tr>
-            <tr>
-                <th class="col1">Content </td>
-                <td style="padding-left:10px">
-                    <textarea name="content" id="content" placeholder="Đây là nội dung..." rows="10" cols="80"><?php echo $row['content']; ?></textarea>
-                </td>
-            </tr>
-            <tr>
-                <th class="col1">Ảnh </td>
-                <td style="padding-left:10px"><input type="hidden" name="size" value="1000000">
-
-                    <input type="file" name="img"><br /><br />
-                </td>
-            </tr>
-            <tr>
-                <td align="center" colspan="2">
-                    <input type="submit" class="btn btn-primary" name="btnSave" value="Lưu"> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" class="btn btn-primary" name="btnBack" value="Back">
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="container">
+        <h2>Cập nhật bài viết</h2>
+        <form method="POST" action="update_post.php">
+            <div class="form-group">
+                <label for="title">Tiêu đề:</label>
+                <input type="text" class="form-control" name="title" value="<?php echo $row['title']; ?>">
+            </div>
+            <div class="form-group">
+                <label for="content">Nội dung:</label>
+                <textarea name="content" id="content" placeholder="Đây là nội dung..." rows="20" cols="80"><?php echo $row['content']; ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Ảnh:</label>
+                <input type="text" name="img" value="<?php echo $row['image_path']; ?>">
+                <br>
+                <?php if (!empty($row['image_path'])) : ?>
+                    <img src="<?php echo $row['image_path']; ?>" alt="Ảnh" style="max-width: 200px;">
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="btnSave" value="Lưu"> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="btn btn-primary" name="btnBack" value="Back">
+            </div>
+        </form>
+    </div>
+    
 </body>
 
 </html>

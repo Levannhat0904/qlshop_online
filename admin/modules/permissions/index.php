@@ -1,6 +1,7 @@
 <?php
 // echo $_SESSION['user_id'];
 $permissions = search_data('permissions');
+$permissionss = search_data('permissions');
 $users = search_data('users');
 if (isset($_POST['btn_search'])) {
     $users = search_data('users', $_POST['email'], 'email', '1');
@@ -88,7 +89,7 @@ if (isset($_POST['btn_add'])) {
 
                     <?php
                     $t = 0;
-                    while ($row = $permissions->fetch_assoc()) {
+                    while ($row = $permissionss->fetch_assoc()) {
                         echo "<tr>";
                         $t++;
                         echo "<th>{$t} </th>";

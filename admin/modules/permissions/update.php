@@ -1,9 +1,12 @@
 <?php
+$id=$_GET["id"];
+$permission = search_data('permissions', $id,'id');
+$permission = $permission->fetch_assoc();
 $permissions = search_data('permissions');
-if(isset($_POST['btn_add'])){
+if(isset($_POST['btn_update'])){
     $data['name'] = $_POST['name'];
     $data['description'] = $_POST['desc'];
-    insert_db('permissions', $data);
+    update_db('permissions', $data,"id", $id);
     echo "<script>window.location='?mod=permissions&act=add_permission'</script>";
 }
 
@@ -13,7 +16,7 @@ if(isset($_POST['btn_add'])){
         <div class="cat-product">
             <div class="post-header">
                 <span style="font-weight: bold; font-size: 20px; line-height: 2; margin-left: 10px;">
-                    Thêm quyền
+                    Cập nhật quyền
                 </span>
                 <hr>
             </div>
@@ -21,13 +24,13 @@ if(isset($_POST['btn_add'])){
             <form action="" method="post">
                 <div class="form-group">
                     <label for="cat">Tên quyền</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" value="<?php echo $permission['name']?>" id="name" name="name">
                 </div>
                 <div class="form-group">
                     <label for="cat">Mô tả</label>
-                    <input type="text" class="form-control" id="desc" name="desc">
+                    <input type="text" class="form-control" value="<?php echo $permission['description']?>" id="desc" name="desc">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Thêm mới" name="btn_add" style="margin: 10px;">
+                <input type="submit" class="btn btn-primary" value="Cập nhật" name="btn_update" style="margin: 10px;">
             </form>
         </div>
 

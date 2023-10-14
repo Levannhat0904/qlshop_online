@@ -51,10 +51,12 @@ if(isset($_POST['btn_search'])&&!empty($_POST['btn_search'])){
                     //     $content .= ' ...'; // Nếu chuỗi dài hơn 100 ký tự, thêm "..." vào cuối
                     // }
                     // echo "<td>" . $content . "</td>";
-                    echo '<td>
-                        <a href="#"><i class="fa-regular fa-pen-to-square" style="font-size: 20px; color: blue;"></i></a>
-                        <a href="#"><i class="fa-solid fa-trash" style="font-size: 20px;"></i></a>
-                      </td>';
+                    echo "<td>";
+                    ?>
+                        <a href="?mod=pages&&act=update&&id=<?php echo $row['id'] ?>"><i class="fa-regular fa-pen-to-square" style="font-size: 20px; color: blue;"></i></a>
+                        <a href="?mod=pages&&act=delete&&id=<?php echo $row['id'] ?>"><i class="fa-solid fa-trash" style="font-size: 20px;"></i></a>
+                    <?php
+                    echo "</td>";
                     $stt++;
                     echo "</tr>";
                 }

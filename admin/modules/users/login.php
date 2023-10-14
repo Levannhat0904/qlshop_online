@@ -2,14 +2,17 @@
 // session_start();
 // $con=mysqli_connect('localhost','root','','test2');
 if (isset($_POST['dangnhap'])) {
-    $name = mysqli_real_escape_string($con, $_POST['txt_ten']);
-    $pass = mysqli_real_escape_string($con, $_POST['txt_mk']);
-    $select = "SELECT * from users where username='$name' && pass='$pass'";
-    $result = mysqli_query($con, $select);
+    $email = mysqli_real_escape_string($conn, $_POST['txt_email']);
+    $pass = mysqli_real_escape_string($conn, $_POST['txt_mk']);
+    $select = "SELECT * from users where email='$email' && password='$pass'";
+    $result = mysqli_query($conn, $select);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result); {
-            $_SESSION['admin_name'] == $row['username'];
-            header('location:phone.php');
+            $_SESSION['user_id'] = $row['id'];
+            echo $_SESSION['user_id']; 
+            // header('location:phone.php');
+            echo "<script>window.location.reload();</script>";
+
         }
     } else {
         $error[] = 'Mật khẩu hoặc tên đăng nhập sai';
@@ -30,7 +33,7 @@ if (isset($_POST['dangky'])) {
             };
         };
         ?>
-        <input type="text" name="txt_ten" required placeholder="enter your username">
+        <input type="email" name="txt_email" required placeholder="enter your username">
         <input type="password" name="txt_mk" required placeholder="enter your password">
         <input class="form-btn" type="submit" value="Đăng nhập" name="dangnhap">
         <p>Bạn chưa có tài khoản? <a href="?mod=users&act=reg">Đăng ký</a></p>

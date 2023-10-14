@@ -1,3 +1,8 @@
+<?php 
+$id=$_SESSION['user_id'];
+$user =search_data('users',$id,'id');
+$user=$user->fetch_assoc();
+?>
 <div class="row" style="min-height: 100vh;">
     <div class="col-2 bg-body-secondary">
         <nav>
@@ -107,12 +112,12 @@
         <div class="row" style="text-align: end; background-color:#f3f0ec;">
             <div class="col bg-dark-white user" style="font-size: 30px;">
                 <i class="fa-solid fa-user"" ></i>
-                        Lê Văn Nhật
+                        <?php echo $user['name'] ?>
                         <div class=" info-user">
-                    <a href="">
+                    <!-- <a href="">
                         <div class="info">Thông tin</div>
-                    </a>
-                    <a href="">
+                    </a> -->
+                    <a href="?mod=users&act=logout">
                         <div class="logout">Đăng xuất</div>
                     </a>
             </div>

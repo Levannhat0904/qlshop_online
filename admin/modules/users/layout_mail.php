@@ -17,7 +17,7 @@
       Tên đăng nhập: <?php echo $username; ?>
       chúng tôi vừa nhận được một yêu cầu lấy lại mật khẩu trên tài khoản của bạn. Để thiết lập lại mật khẩu bạn vui
       lòng click vào đây:
-      <a href="https://unitop.vn/resetpass/?user_email=hiamnhatdz203@gmail.com&code_change_pass=8ab8dff7441eda91aa7bb26becb3afd3">resetpass</a>
+      <a href="<?php echo $url; ?>">resetpass</a>
       Nếu không phải yêu cầu của bạn, hãy bỏ qua email này.
       Team support Unitop.vn
     </div>
