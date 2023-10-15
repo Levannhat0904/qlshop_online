@@ -5,15 +5,15 @@ require_once './connectdb.php';
 $item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:5;
 $current_page=!empty($_GET['page'])?$_GET['page']:1;
 $offset=($current_page-1)*$item_per_page;
-$sql = "SELECT * FROM products ORDER BY 'id' ASC limit ".$item_per_page." offset ".$offset." ";
+$sql="SELECT * FROM products ORDER BY 'id' ASC limit ".$item_per_page." offset ".$offset." ";
 $tongsp=mysqli_query($con,"SELECT * FROM products");
 $tongsp=$tongsp->num_rows;
 $sotrang=ceil($tongsp/$item_per_page);
 $data = mysqli_query($con, $sql);
-$data1 = mysqli_query($con, $sql);
+// $data2 = mysqli_query($con, $sql);
 //tìm kiếm
-$sql="SELECT * FROM products  ";
-$data=mysqli_query($con,$sql);
+// $sql1="SELECT * FROM products  ";
+// $data3=mysqli_query($con,$sql1);
 if(isset($_POST['btnTim']))
 {
     $tensanpham=$_POST['txt_sp'];
@@ -34,7 +34,8 @@ if(isset($_POST['btnTim']))
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css">
 </head>
 <body>
-    <div class="app">
+    <form action="" method="post">
+      <div class="app">
         <header class="header">
             <div class="grid">
             <nav class="header__navbar">
@@ -51,7 +52,9 @@ if(isset($_POST['btnTim']))
             </nav>
            <div class="header-with-search">
             <div class="header__logo">
-                    <a href="./index.php"><img class="header__logo-img" src="./picture/logo.png" alt="" ></a>    
+                <form action="./index.php" method="post">
+                    <img class="header__logo-img" src="./picture/logo.png" alt="" >
+                </form>    
             </div>
             <!-- Tìm kiếm sản phẩm -->
             <div class="header__search">
@@ -229,7 +232,9 @@ if(isset($_POST['btnTim']))
                 </div>
                 </div>
         </footer>
-    </div>
+    </div>  
+    </form>
+    
 </body>
 </html>
 

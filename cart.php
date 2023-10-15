@@ -23,7 +23,7 @@ mysqli_close($con);
     <style>
         .but{
             text-align: center;
-            width: 30px;
+            width: 50px;
         }
     </style>
     <link rel="stylesheet" href="./css/menu.css">
@@ -73,7 +73,7 @@ mysqli_close($con);
             <?php 
                if (isset($data) && $data != null) {
                 $i = 1;
-                $totalAmount = 0; // Biến để tính tổng tiền
+                $totalAmount = 0; // Biến để tính tổng tiền               
                 while ($row = mysqli_fetch_array($data)) {
                     $thanhTien = $row['soluong'] * $row['dongia'];
                     $totalAmount += $thanhTien;
@@ -131,7 +131,6 @@ mysqli_close($con);
             }
             return total;
         }
-    </script>
-    
+    </script>   
 </body>
 </html>

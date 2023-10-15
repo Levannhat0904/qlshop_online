@@ -6,7 +6,7 @@ require_once './connectdb.php';
 $item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:5;
 $current_page=!empty($_GET['page'])?$_GET['page']:1;
 $offset=($current_page-1)*$item_per_page;
-$sql = "SELECT * FROM products ORDER BY 'id' ASC limit ".$item_per_page." offset ".$offset." ";
+$sql = "SELECT * FROM products ORDER BY 'id' desc limit ".$item_per_page." offset ".$offset." ";
 $tongsp=mysqli_query($con,"SELECT * FROM products");
 $tongsp=$tongsp->num_rows;
 $sotrang=ceil($tongsp/$item_per_page);
