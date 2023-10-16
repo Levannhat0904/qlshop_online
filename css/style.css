@@ -13,15 +13,29 @@ body {
 
 .news-card {
   width: 2000px;
-  height: 280px;
+  height: 150px;
   margin-bottom: 30px;
   border: 0px solid #0d0c0c;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
 
 .news-content {
   padding: 20px;
+  display: flex;
+  align-items: center;
 }
+
+.news-card img {
+  margin-right: 10px;
+}
+
+.post-title h2 {
+  margin: 0;
+}
+
+
 
 
