@@ -8,15 +8,10 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+  
     <?php
     include_once './h1.php';
     require('connectdb.php');
-=======
-  <?php
-  include_once './menu.php';
-  require('connectdb.php');
->>>>>>> aab8ff60edbc651bbce00dacc3f623e6988b9f2a
 
   // Lấy danh sách bài viết từ cơ sở dữ liệu
   $sql = "SELECT * FROM post";
@@ -37,5 +32,4 @@
       </div>
     <?php endwhile; ?>
 </body>
-
 </html>

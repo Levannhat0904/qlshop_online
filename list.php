@@ -3,7 +3,7 @@
 //Kết nối database
 require_once './connectdb.php';
 //Phân trang
-$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:5;
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:15;
 $current_page=!empty($_GET['page'])?$_GET['page']:1;
 $offset=($current_page-1)*$item_per_page;
 $sql = "SELECT * FROM products ORDER BY 'id' desc limit ".$item_per_page." offset ".$offset." ";
@@ -11,10 +11,10 @@ $tongsp=mysqli_query($con,"SELECT * FROM products");
 $tongsp=$tongsp->num_rows;
 $sotrang=ceil($tongsp/$item_per_page);
 $data = mysqli_query($con, $sql);
-$data1 = mysqli_query($con, $sql);
+// $data1 = mysqli_query($con, $sql);
 //tìm kiếm
-$sql="SELECT * FROM products";
-$data=mysqli_query($con,$sql);
+// $sql="SELECT * FROM products";
+// $data=mysqli_query($con,$sql);
 if(isset($_POST['btnTim']))
 {
     $tensanpham=$_POST['txt_sp'];
@@ -35,7 +35,8 @@ if(isset($_POST['btnTim']))
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css">
 </head>
 <body>
-    <div class="app">
+    <form action="" method="post">
+      <div class="app">
         <header class="header">
             <div class="grid">
             <nav class="header__navbar">
@@ -229,7 +230,9 @@ if(isset($_POST['btnTim']))
                 </div>
                 </div>
         </footer>
-    </div>
+    </div>  
+    </form>
+    
 </body>
 </html>
 

@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-    include_once './menu.php';
+    include_once './h1.php';
     require('connectdb.php');
     // Lấy danh sách bài viết từ cơ sở dữ liệu
     $id = $_GET['id'];
