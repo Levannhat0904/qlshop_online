@@ -24,25 +24,24 @@ if (isset($_POST['btn_add_cart'])) {
     $productId = $_POST['id'];
     $quantity = $_POST['qty'];
     $selectedColor = $_POST['color']; // Biến lưu trữ tên màu sắc
+
     if ($quantity == '') {
         echo "<script>alert('Chưa nhập số lượng')</script>";
         echo "<script>document.getElementById('number').focus()</script>";
     } else {
-        // Kiểm tra trùng mã id
-        $sql1 = "SELECT * FROM giohang WHERE idsanpham='$productId'";
-        $dt = mysqli_query($con, $sql1);
+        // Kiểm tra trùng mã id và màu sắc
+        $sql = "SELECT * FROM giohang WHERE idsanpham='$productId' AND mausac='$selectedColor'";
+        $result = mysqli_query($con, $sql);
 
-        if (mysqli_num_rows($dt) > 0) {
-            $sql2 = "UPDATE giohang SET soluong = soluong + $quantity WHERE idsanpham= '$productId'";
+        if (mysqli_num_rows($result) > 0) {
+            // Trùng id sản phẩm và màu sắc
+            $sql2 = "UPDATE giohang SET soluong = soluong + $quantity WHERE idsanpham= '$productId' AND mausac = '$selectedColor'";
             mysqli_query($con, $sql2);
             echo "<script>alert('Số lượng sản phẩm đã được cập nhật')</script>";
         } else {
-            // Thêm vào giỏ hàng
-            $sql = "INSERT INTO giohang (idsanpham, mausac, soluong) VALUES ('$productId','$selectedColor','$quantity')";
-            $kq = mysqli_query($con, $sql);
-            if ($kq) {
-                echo "<script>alert('Đã thêm vào giỏ hàng')</script>";
-            }
+            $sql3 = "INSERT INTO giohang (idsanpham, mausac, soluong) VALUES ('$productId','$selectedColor','$quantity')";
+            mysqli_query($con, $sql3);
+            echo "<script>alert('Đã thêm vào giỏ hàng')</script>";
         }
         echo "<script>window.location.href='./cart.php'</script>";
     }
