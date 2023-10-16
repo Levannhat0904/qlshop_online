@@ -58,12 +58,12 @@ mysqli_close($con);
 <form method="GET" action="">
 <div class="container">
     <h1>Danh sách bài viết</h1>
-    <form method="GET" action="">
-      <div class="search-bar">
-        <input class="form-control" type="text" name="id">
-        <input class="btn btn-primary" type="submit" name="btnTim" value="Tìm kiếm">
-      </div>
-    </form>
+    <div class="header__search">
+               <form class="header__search" action="" method="post">
+                <input type="text" class="header__search-input" placeholder="Tìm kiếm bài viết" name="id">
+                <input type="submit"  value="Tìm kiếm" name="btnTim" class="header__search-btn">
+                 </form> 
+    </div>
     <div class="add-post">
       <a href="./add_post.php" class="btn btn-primary">
         <h3><b>Thêm bài viết</b></h3>
@@ -73,7 +73,7 @@ mysqli_close($con);
     <table border="1px" cellspacing="0">
       <thead>
         <tr>
-          <th style="width :30px"">ID</th>
+          <th style="width :30px">ID</th>
           <th>Ảnh</th>
           <th>Tiêu đề</th>
           <th>Nội dung</th>

@@ -1,39 +1,41 @@
 body {
-<<<<<<< HEAD
-    /* font-family: Arial, Helvetica, sans-serif; */
-    background: #eb3b5a;
-    line-height: 1.2;
+  margin: 0;
+  padding: 0;
+ 
 }
-#wapper {
-    max-width: 600px;
-    background-color: #fff;
-    margin: 30px auto;
-=======
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-   
-  }
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 20px;
-  }
-  
-  .news-card {
-    width: 1200px;
-    height: 280px;
-    margin-bottom: 30px;
-    border: 0px solid #0d0c0c;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .news-content {
->>>>>>> aab8ff60edbc651bbce00dacc3f623e6988b9f2a
-    padding: 20px;
-  }
-  
-  
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.news-card {
+  width: 2000px;
+  height: 150px;
+  margin-bottom: 30px;
+  border: 0px solid #0d0c0c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.news-content {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.news-card img {
+  margin-right: 10px;
+}
+
+.post-title h2 {
+  margin: 0;
+}
+
+
+
+
