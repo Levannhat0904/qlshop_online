@@ -21,7 +21,7 @@
   mysqli_close($con);
   ?>
 
-  <div class="container"> <!-- Di chuyển đến đây -->
+  <div class="container"> 
     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
       <div class="news-card">
         <a href="" style="float: left;">
@@ -32,7 +32,7 @@
         </a>
       </div>
     <?php endwhile; ?>
-  </div>F
+  </div>
 </body>
 
 </html>
