@@ -57,7 +57,7 @@ if (isset($_POST['btnTim'])) {
                     </div>
                     <!-- Tìm kiếm sản phẩm -->
                     <div class="header__search">
-                        <form class="header__search" action="index.php" method="post">
+                        <form class="header__search" action="index." method="post">
                             <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm" name="txt_sp">
                             <input type="submit" value="Tìm" name="btnTim" class="header__search-btn">
                         </form>

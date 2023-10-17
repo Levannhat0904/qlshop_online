@@ -2,13 +2,13 @@
 // Kết nối database
 require_once './connectdb.php';
 // Thực hiện truy vấn
-$sql = "SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id";
+$sql = "SELECT giohang.*, color.name AS color_name, products.name AS products_name, products.price AS products_price FROM giohang LEFT JOIN color ON giohang.mausac = color.id LEFT JOIN products ON giohang.idsanpham COLLATE utf8mb4_general_ci = products.id COLLATE utf8mb4_general_ci";
 $data = mysqli_query($con, $sql);
 // Tìm kiếm
 if (isset($_POST['btnTim'])) {
     $tensanpham = $_POST['txt_tensp'];
     $idsanpham = $_POST['txt_masp'];
-    $sqltk = "SELECT giohang.*, color.name AS color_name FROM giohang LEFT JOIN color ON giohang.mausac = color.id WHERE giohang.idsanpham LIKE '%$idsanpham%' AND giohang.tensanpham LIKE '%$tensanpham%'";
+    $sqltk = "SELECT giohang.*, color.name AS color_name, products.name AS products_name, products.price AS products_price FROM giohang LEFT JOIN color ON giohang.mausac = color.id LEFT JOIN products ON giohang.idsanpham COLLATE utf8mb4_general_ci = products.id COLLATE utf8mb4_general_ci  WHERE giohang.idsanpham LIKE '%$idsanpham%' AND products.name LIKE '%$tensanpham%'";
     $data = mysqli_query($con, $sqltk);
 }
 // Đóng kết nối
@@ -75,17 +75,17 @@ mysqli_close($con);
                 $i = 1;
                 $totalAmount = 0; // Biến để tính tổng tiền               
                 while ($row = mysqli_fetch_array($data)) {
-                    $thanhTien = $row['soluong'] * $row['dongia'];
+                    $thanhTien = $row['soluong'] * $row['products_price'];
                     $totalAmount += $thanhTien;
                     ?>
                     <tr align="center">
                         <td><?php echo $i++ ?></td>
                         <td><?php echo $row['idsanpham'] ?></td>
-                        <td><?php echo $row['tensanpham'] ?></td>
+                        <td><?php echo $row['products_name'] ?></td>
                         <td><?php echo $row['color_name'] ?></td>
-                        <td><?php echo number_format($row['dongia'],0,",",".")?></td>
+                        <td><?php echo number_format($row['products_price'],0,",",".")?></td>
                         <td>
-                            <input class="but" type="number" name="txt_soluong" value="<?php echo $row['soluong'] ?>" onkeyup="updatePrice(this, <?php echo $row['dongia'] ?>)" min="1" width="50px">
+                            <input class="but" type="number" name="txt_soluong" value="<?php echo $row['soluong'] ?>" onkeyup="updatePrice(this, <?php echo $row['products_price'] ?>)" min="1" width="50px">
                         </td>
                         <td id="thanh-tien-<?php echo $row['idsanpham'] ?>"><?php echo number_format($thanhTien,0,",",".") ?></td>
                         <td>
@@ -134,3 +134,5 @@ mysqli_close($con);
     </script>   
 </body>
 </html>
+
+
