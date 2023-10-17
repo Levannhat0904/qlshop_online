@@ -57,7 +57,7 @@ mysqli_close($con);
  
 <form method="GET" action="">
 <div class="container">
-    <h1>Danh sách bài viết</h1>
+    <a href="index.php" style="text-decoration: none;"><h1>Danh sách bài viết</h1></a>
     <div class="header__search">
                <form class="header__search" action="" method="post">
                 <input type="text" class="header__search-input" placeholder="Tìm kiếm bài viết" name="id">
