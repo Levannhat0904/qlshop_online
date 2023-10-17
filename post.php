@@ -21,8 +21,8 @@
   mysqli_close($con);
   ?>
 
-  <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-    <div class="container">
+  <div class="container"> <!-- Di chuyển đến đây -->
+    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
       <div class="news-card">
         <a href="" style="float: left;">
           <img width="150px" height="150px" src="<?php echo $row['image_path']; ?>" alt="Ảnh">
@@ -32,6 +32,7 @@
         </a>
       </div>
     <?php endwhile; ?>
+  </div>F
 </body>
 
 </html>
