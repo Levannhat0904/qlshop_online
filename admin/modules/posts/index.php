@@ -1,5 +1,5 @@
 <?php
-require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+require('connectdtb.php');
 // Truy vấn cơ sở dữ liệu để lấy danh sách bài viết
 $sql = "SELECT * FROM post";
 $data = mysqli_query($con, $sql);

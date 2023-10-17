@@ -1,5 +1,5 @@
 <?php
-require_once '/xampp/htdocs/qlshop_online/connectdb.php';
+require('connectdtb.php');
 $id = $_GET['id'];
 //Tìm kiếm theo id
 $sqltk = "SELECT * FROM post WHERE id='$id'";
