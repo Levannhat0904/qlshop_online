@@ -79,21 +79,22 @@ function update_db($table_name, $data = array(), $key, $value)
         }
     }
 }
-function search_data($table_name, $data = "", $datafield = "", $bool = true)
+function search_data($table_name, $data = "", $field = "", $bool = true)
 {
     global $conn;
     if ($data != "" && $bool == true) {
         if (is_int($data)) {
-            $sql = "SELECT * FROM  $table_name  WHERE $datafield= {$data}";
-        }else{
-            $sql = "SELECT * FROM  $table_name  WHERE $datafield= '{$data}'";
+            $sql = "SELECT * FROM  $table_name  WHERE $field= {$data}";
+        } else {
+            $sql = "SELECT * FROM  $table_name  WHERE $field= '{$data}'";
             // echo $sql;
         }
     } else if ($data != "" && $bool == false) {
-        $sql = "SELECT * FROM $table_name WHERE $datafield LIKE '%$data%'";
+        $sql = "SELECT * FROM $table_name WHERE $field LIKE '%$data%'";
     } else {
         $sql = "SELECT * FROM  $table_name  ";
     }
+    // echo $sql;
     $result = $conn->query($sql);
     return $result;
 }

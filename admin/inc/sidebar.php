@@ -1,7 +1,7 @@
-<?php 
-$id=$_SESSION['user_id'];
-$user =search_data('users',$id,'id');
-$user=$user->fetch_assoc();
+<?php
+$id = $_SESSION['user_id'];
+$user = search_data('users', $id, 'id');
+$user = $user->fetch_assoc();
 ?>
 <div class="row" style="min-height: 100vh;">
     <div class="col-2 bg-body-secondary">
@@ -11,7 +11,7 @@ $user=$user->fetch_assoc();
                 <hr>
             </div>
             <!-- kiểm tra quyền -->
-            
+
             <div class="nav">
                 <div class="d-inline-block nav-item">
                     <a href="?mod=dashbroad" class="menu-link">
@@ -65,7 +65,7 @@ $user=$user->fetch_assoc();
             </div>
             <div class="nav">
                 <div class="d-inline-block nav-item">
-                    <a href="?mod=pages" class="menu-link">
+                    <a href="?mod=orders" class="menu-link">
                         <div class="d-inline-block text-dark menu">
                             <i class="far fa-folder "></i>&nbsp; Đơn hàng
                         </div>

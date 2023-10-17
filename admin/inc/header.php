@@ -13,7 +13,8 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <base href="http://localhost/qlshop_online/admin/"> -->
-    <base href="http://localhost:8088/nhom1/admin/">
+    <base href="http://localhost/qlshop_online/admin/">
+    <!-- <base href="http://localhost:8088/nhom1/admin/"> -->
     <script src="plugins/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="public/css/style.css">
     <title>Document</title>

@@ -1,6 +1,5 @@
 <?php
-// session_start();
-// $con=mysqli_connect('localhost','root','','test2');
+// echo "hello world";
 if (isset($_POST['dangnhap'])) {
     $email = mysqli_real_escape_string($conn, $_POST['txt_email']);
     $pass = mysqli_real_escape_string($conn, $_POST['txt_mk']);
@@ -9,10 +8,9 @@ if (isset($_POST['dangnhap'])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result); {
             $_SESSION['user_id'] = $row['id'];
-            echo $_SESSION['user_id']; 
+            echo $_SESSION['user_id'];
             // header('location:phone.php');
             echo "<script>window.location.reload();</script>";
-
         }
     } else {
         $error[] = 'Mật khẩu hoặc tên đăng nhập sai';

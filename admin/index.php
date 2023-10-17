@@ -1,5 +1,5 @@
 <?php
-
+//  echo "hello world";
 require "lib/db.php";
 session_start();
 require "lib/template.php";
@@ -10,10 +10,10 @@ require "lib/template.php";
 if (empty($_SESSION['user_id'])) {
     get_header('header_user.php');
     $mod = 'users';
-    $act =['login','reg','getpass','mail_getpass','logout','reset'];
-    if(isset($_GET['act']) && in_array($_GET['act'], $act)){
+    $act = ['login', 'reg', 'getpass', 'mail_getpass', 'logout', 'reset'];
+    if (isset($_GET['act']) && in_array($_GET['act'], $act)) {
         $act = $_GET['act'];
-    }else{
+    } else {
         $act = 'login';
     }
     $path = "modules/{$mod}/{$act}.php";
