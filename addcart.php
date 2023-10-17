@@ -26,5 +26,3 @@ session_start();
          }   
         echo "<script>window.location.href='./cart.php'</script>";
         mysqli_close($con);
-?>
-

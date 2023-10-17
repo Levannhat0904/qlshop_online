@@ -1,9 +1,9 @@
 <?php 
-    $idsanpham=$_GET['idsanpham'];
+    $id=$_GET['id'];
     //kết nối db
     require_once './connectdb.php';
     //thực hiện xóa
-    $sql="DELETE FROM giohang WHERE idsanpham='$idsanpham'";
+    $sql="DELETE FROM giohang WHERE id='$id'";
     $kq=mysqli_query($con,$sql);
     //Đóng kết nối
     mysqli_close($con);
@@ -16,4 +16,3 @@
     }
     //Gọi lại danh sách loại sách
     echo "<script>window.location.href='./cart.php'</script>";
-?>

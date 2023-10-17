@@ -35,6 +35,7 @@ if (isset($_POST['btn_buy_now'])) {
                         $sql_update = "UPDATE products SET qty = '$qty' WHERE id = '$product_id'";
                         $kq = mysqli_query($con, $sql_update);
                         echo "<script> alert('Mua hàng thành công')</script>";
+                        unset($_SESSION['product_order']);
                 } else {
                         echo "Lỗi: " . mysqli_error($con);
                 }

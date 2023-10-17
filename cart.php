@@ -16,12 +16,13 @@ mysqli_close($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .but{
+        .but {
             text-align: center;
             width: 50px;
         }
@@ -29,20 +30,21 @@ mysqli_close($con);
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/css_bootstrap.min.css">
 </head>
+
 <body>
-    <?php include_once'./h1.php'?>
+    <?php include_once './h1.php' ?>
     <form action="" method="post">
         <table align="center" height="200px">
-    <tr>
+            <tr>
                 <td colspan="2">
                     <h4>Thông tin tìm kiếm sản phẩm</h4>
                 </td>
             </tr>
-            
+
             <tr>
                 <td class="col1">Mã sản phẩm</td>
                 <td class="col2">
-                <input type="text" name="txt_masp">
+                    <input type="text" name="txt_masp">
                 </td>
             </tr>
             <tr></tr>
@@ -53,16 +55,16 @@ mysqli_close($con);
                 </td>
             </tr>
             <tr>
-            <td class="col1"></td>
+                <td class="col1"></td>
                 <td class="col2">
-                <input type="submit" name="btnTim" value="Tìm kiếm">
-                </td> 
+                    <input type="submit" name="btnTim" value="Tìm kiếm">
+                </td>
             </tr>
         </table>
         <br><br>
         <table width="1200px" height="250px" align="center" border="1">
             <tr align="center">
-                <th >STT</th>
+                <th>STT</th>
                 <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th>Màu sắc</th>
@@ -70,46 +72,47 @@ mysqli_close($con);
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
             </tr>
-            <?php 
-               if (isset($data) && $data != null) {
+            <?php
+            if (isset($data) && $data != null) {
                 $i = 1;
                 $totalAmount = 0; // Biến để tính tổng tiền               
                 while ($row = mysqli_fetch_array($data)) {
                     $thanhTien = $row['soluong'] * $row['products_price'];
                     $totalAmount += $thanhTien;
-                    ?>
+            ?>
                     <tr align="center">
                         <td><?php echo $i++ ?></td>
                         <td><?php echo $row['idsanpham'] ?></td>
                         <td><?php echo $row['products_name'] ?></td>
                         <td><?php echo $row['color_name'] ?></td>
-                        <td><?php echo number_format($row['products_price'],0,",",".")?></td>
+                        <td><?php echo number_format($row['products_price'], 0, ",", ".") ?></td>
                         <td>
                             <input class="but" type="number" name="txt_soluong" value="<?php echo $row['soluong'] ?>" onkeyup="updatePrice(this, <?php echo $row['products_price'] ?>)" min="1" width="50px">
                         </td>
-                        <td id="thanh-tien-<?php echo $row['idsanpham'] ?>"><?php echo number_format($thanhTien,0,",",".") ?></td>
+                        <td id="thanh-tien-<?php echo $row['idsanpham'] ?>"><?php echo number_format($thanhTien, 0, ",", ".") ?></td>
                         <td>
-                            <a href="./cart_delete.php?idsanpham=<?php echo $row['idsanpham'] ?>">Xóa</a>&nbsp;&nbsp;
-                        </td>   
+                            <a href="./cart_delete.php?id=<?php echo $row['id'] ?>">Xóa</a>&nbsp;&nbsp;
+                            <a href="./capnhat.php?id=<?php echo $row['id'] ?>">Cập nhật</a>&nbsp;&nbsp;
+                        </td>
                     </tr>
-            <?php 
+            <?php
                 }
             }
             ?>
             <tr>
                 <td colspan="8" align="right">
-                    <h5>Tổng tiền: <span id="tong-tien"><?php echo number_format($totalAmount,0,",","." ) ?>đ</span></h4>
+                    <h5>Tổng tiền: <span id="tong-tien"><?php echo number_format($totalAmount, 0, ",", ".") ?>đ</span></h4>
                 </td>
             </tr>
             <tr>
                 <td colspan="8" align="right">
                     <a class="btn btn-primary" href="./delete_allcart.php">Xóa tất cả</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-primary" href="">Thanh toán</a>
+                    <a class="btn btn-primary" href="./buy_now_cart.php">Thanh toán</a>
                 </td>
-            </tr>    
+            </tr>
         </table>
-        
-    </form>  
+
+    </form>
     <script>
         function updatePrice(input, dongia) {
             var soluong = input.value;
@@ -119,6 +122,7 @@ mysqli_close($con);
             var total = calculateTotal();
             document.getElementById('tong-tien').innerHTML = total;
         }
+
         function calculateTotal() {
             var table = document.querySelector('table');
             var rows = table.querySelectorAll('tr');
@@ -131,8 +135,7 @@ mysqli_close($con);
             }
             return total;
         }
-    </script>   
+    </script>
 </body>
+
 </html>
-
-
